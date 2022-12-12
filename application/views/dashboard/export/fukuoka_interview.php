@@ -32,7 +32,7 @@ $html = '
       
         <dl style="margin:0px;">
             <dt style="width:450px;float:left;"><h3 style="font-family: sjis;margin-bottom:0px;padding-top:0px;">日本語センター名：<span style="font-size:14px;font-weight:normal;"><?php echo $resultprejpstudy->jp_name?></span></h3></dt>
-            <dd style="width:25%;float: right;"><h3 style="font-family: sjis;margin-bottom:0px;padding-top:0px;">年　　　月　　　日</h3></dd>
+            <dd style="width:25%;float: right;"><h3 style="font-family: sjis;margin-bottom:0px;padding-top:0px;"><?php echo $splitted = date('Y', strtotime($result->created_at));?>年　<?php echo $splitted = date('m', strtotime($result->created_at));?>月　<?php echo $splitted = date('d', strtotime($result->created_at));?>日</h3></dd>
       
         </dl>
     </section>

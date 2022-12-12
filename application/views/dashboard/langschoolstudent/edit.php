@@ -1197,18 +1197,18 @@ $(function() {
     </select>
   </div>
   <div class="form-group">
-        <?php echo form_label('If you select ”Yes”, please tell us in detal about your allegy.', 'will_you_return', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'phone')); ?>
+        <?php echo form_label('If you select ”Yes”, please tell us in detal about your allegy.', 'allergic_medicine_details', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'phone')); ?>
         <?php
           echo form_input(array(
-            'name' => 'will_you_return',
+            'name' => 'allergic_medicine_details',
             'type' => 'text',
-            'value' => html_escape(set_value('will_you_return',isset($result)?$result->will_you_return:''), ENT_QUOTES),
+            'value' => html_escape(set_value('allergic_medicine_details',isset($result13)?$result13->allergic_medicine_details:''), ENT_QUOTES),
             'placeholder' => 'Please Enter!',
             'class' => 'form-control',
-            'id' => 'will_you_return',
+            'id' => 'allergic_medicine_details',
             'autocomplete' => ''));
         ?>
-        <span class="text-danger"><?php echo form_error('will_you_return'); ?></span>
+        <span class="text-danger"><?php echo form_error('allergic_medicine_details'); ?></span>
   </div>
   
 </div> 
@@ -1278,18 +1278,18 @@ $(function() {
   <?php echo form_label('Intended to enroll', 'intended_roll', array( 'class' => 'form-control-label', 'id'=> '')); ?>
     <span class="badge badge-danger">Required</span>
     <select name="intended_roll" id="intended_roll" class="admission_select">
-          <option value="1" <?php if($result13->intended_roll== "issued") {echo "selected";} ?>>issued</option>
-          <option value="0" <?php if($result13->intended_roll== "issued") {echo "selected";} ?>>denied</option>
+          <option value="1" <?php if($result13->intended_roll== "1") {echo "selected";} ?>>issued</option>
+          <option value="0" <?php if($result13->intended_roll== "0") {echo "selected";} ?>>denied</option>
       </select>
 </div>
 <div class="form-group">
        <?php echo form_label('ビザの種類 type of visa', 'eligibility_visa', array( 'class' => 'form-control-label', 'id'=> '')); ?>
        <span class="badge badge-danger">Required</span>
        <select name="eligibility_visa" id="eligibility_visa" class="admission_select">
-          <option value="Student" <?php if($result13->eligibility_visa== "1") {echo "selected";} ?>>Student</option>
-          <option value="Trainee" <?php if($result13->eligibility_visa== "0") {echo "selected";} ?>>Trainee</option>
-          <option value="Technical" <?php if($result13->eligibility_visa== "1") {echo "selected";} ?>>Technical</option>
-          <option value="Others" <?php if($result13->eligibility_visa== "0") {echo "selected";} ?>>Others</option>
+          <option value="Student" <?php if($result13->eligibility_visa== "Student") {echo "selected";} ?>>Student</option>
+          <option value="Trainee" <?php if($result13->eligibility_visa== "Trainee") {echo "selected";} ?>>Trainee</option>
+          <option value="Technical" <?php if($result13->eligibility_visa== "Technical") {echo "selected";} ?>>Technical</option>
+          <option value="Others" <?php if($result13->eligibility_visa== "Others") {echo "selected";} ?>>Others</option>
         </select>
       </div> 
 </div>
@@ -1609,7 +1609,7 @@ $(function() {
             'id' => 'six_tuition_fee',
             'autocomplete' => ''));
         ?>
-        <span class="text-danger"><?php echo form_error('family_mail'); ?></span>
+        <span class="text-danger"><?php echo form_error('six_tuition_fee'); ?></span>
        </div>
 
        <div class="form-group">
@@ -1665,7 +1665,7 @@ $(function() {
           echo form_input(array(
             'name' => 'living_expense_amount',
             'type' => 'text',
-            'value' => html_escape(set_value('phone',isset($result13)?$result13->living_expense_amount:''), ENT_QUOTES),
+            'value' => html_escape(set_value('living_expense_amount',isset($result13)?$result13->living_expense_amount:''), ENT_QUOTES),
             'placeholder' => 'Enter address!',
             'class' => 'form-control',
             'id' => 'living_expense_amount',
@@ -1730,7 +1730,7 @@ applicant and your relationship to the applicant.','defraying_details', array('c
         <span class="badge badge-danger">Required</span>
         <?php
           echo form_input(array(
-            'name' => 'family_address',
+            'name' => 'defraying_tel',
             'type' => 'text',
             'value' => html_escape(set_value('defraying_tel',isset($result13)?$result13->defraying_tel:''), ENT_QUOTES),
             'placeholder' => 'Enter address!',
@@ -2464,7 +2464,7 @@ $(function() {
         echo form_input(array(
           'name' => 'registered_enrollment',
           'type' => 'text',
-          'value' => html_escape(set_value('registered_enrollment',isset($result)?$result->military_service_details:''), ENT_QUOTES),
+          'value' => html_escape(set_value('registered_enrollment',isset($result13)?$result13->registered_enrollment:''), ENT_QUOTES),
           'placeholder' => 'Please Enter!',
           'class' => 'form-control',
           'id' => 'registered_enrollment',

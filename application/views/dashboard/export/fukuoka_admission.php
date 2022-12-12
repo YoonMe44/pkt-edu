@@ -363,7 +363,7 @@ $html = '
                             発行機関Authority
                             </td>
                             <td style="width: 25%;border:none;font-size:14px;">
-                            ____________________________________
+                            <?php echo $result9->passport_issue_authority?>
                             </td>
                         </tr>
                         </table>                     
@@ -476,25 +476,25 @@ $html = '
                         </tr>
                         <tr style="border-bottom:none;border-top:none;">
                             <td style="width: 40%;border:none;font-size:14px;">				
-                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" style="width: 50%;float:left;" checked>
-                                <label for="vehicle1"> 大学院  Postgraduate Course</label>
+                                <input type="checkbox" id="specific_plans_after_graduating" name="specific_plans_after_graduating" value="Postgraduate Course" style="width: 50%;float:left;" <?php if($result->specific_plans_after_graduating == 'Postgraduate Course') { echo "checked='checked'"; }?>>
+                                <label for="specific_plans_after_graduating"> Postgraduate Course</label>
                             </td>
                             <td style="width: 10%;border:none;"></td>
                             <td style="width: 40%;border:none;font-size:14px;">				
-                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" style="width: 50%;float:left;" checked>
-                                <label for="vehicle1"> 大学 Undergraduate Course </label>
+                                <input type="checkbox" id="specific_plans_after_graduating" name="specific_plans_after_graduating" value="Undergraduate Course" style="width: 50%;float:left;" <?php if($result->specific_plans_after_graduating == 'Undergraduate Course') { echo "checked='checked'"; }?>>
+                                <label for="specific_plans_after_graduating"> 大学 Undergraduate Course </label>
                             </td>
                             <td style="width: 10%;border:none;"></td>
                         </tr>
                         <tr style="border-bottom:none;border-top:none;">
                             <td style="width: 40%;border:none;font-size:14px;">				
-                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" style="width: 50%;float:left;" checked>
-                                <label for="vehicle1"> 短大  Junior College    </label>
+                                <input type="checkbox" id="specific_plans_after_graduating" name="specific_plans_after_graduating" value="Junior College" style="width: 50%;float:left;" <?php if($result->specific_plans_after_graduating == 'Junior College') { echo "checked='checked'"; }?>>
+                                <label for="specific_plans_after_graduating"> 短大  Junior College    </label>
                             </td>
                             <td style="width: 10%;border:none;"></td>
                             <td style="width: 40%;border:none;font-size:14px;">				
-                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" style="width: 50%;float:left;" checked>
-                                <label for="vehicle1"> 専門学校  Professional School</label>
+                                <input type="checkbox" id="specific_plans_after_graduating" name="specific_plans_after_graduating" value="Professional School" style="width: 50%;float:left;" <?php if($result->specific_plans_after_graduating == 'Professional School') { echo "checked='checked'"; }?>>
+                                <label for="specific_plans_after_graduating"> 専門学校  Professional School</label>
                             </td>
                            <td style="width: 10%;border:none;"></td>
                         </tr>
@@ -536,8 +536,8 @@ $html = '
                             <td colspan="2" style="border:none;padding-left:85px;">				
                             申請日Date of Application
                             </td>
-                            <td colspan="3" style="border:none;padding-left:50px;">年　    　　月　　   　日
-                                <br>    year　　month　　day
+                            <td colspan="3" style="border:none;padding-left:50px;"><?php echo $splitted = date('Y', strtotime($result->created_at));?>年　　<?php echo $splitted = date('m', strtotime($result->created_at));?>月　　<?php echo $splitted = date('d', strtotime($result->created_at));?>日
+                                <br> 　　year　　month　　day
                             </td>
                         </tr>
                         <tr style="width:100%;margin:0 auto;border-bottom:none;border-top:none;">

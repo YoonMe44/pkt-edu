@@ -193,7 +193,7 @@ $html = '
                     直近の出入国歴 <br>The latest entry																                                                                                                                                                                 
                 </th>
                 <td colspan="1">
-               
+                <?php echo $result->date_of_departure?>
                 </td>
             </tr>
         </table>																
@@ -259,7 +259,7 @@ $html = '
                                     <tr>
                                         <td style="font-size: 11px; text-align: center;"><?php echo $row7->ja_fam_relationship?></td>
                                         <td style="font-size: 12px; text-align: center;"><?php echo $row7->ja_fam_name?></td>
-                                        <td style="font-size: 11px; text-align: center;"><?php echo $row7->ja_fam_date_birth?></td>
+                                        <td style="font-size: 11px; text-align: center;"><?php if($row7->ja_fam_date_birth == ''){echo '-';}else{echo $row7->ja_fam_date_birth;}?></td>
                                         <td style="font-size: 11px; text-align: center;"><?php echo $row7->ja_fam_nationality?></td>
                                         <td style="font-size: 11px; text-align: center;"><?php echo $row7->ja_fam_address?></td>
                                         <td style="font-size: 11px; text-align: center;"><?php echo $row7->ja_fam_work_place?></td>
@@ -269,6 +269,8 @@ $html = '
                             </tbody>
                         </table>
 </section>
+
+<!-- <?php print_r($result);?> -->
 <section class="edu-background" style="margin-top: 20px;">
     <div class="clearfix mb-5"></div>	
     <div class="eligibility-status" style="padding: 10px 0px 0px;">	
@@ -312,7 +314,7 @@ $html = '
                             <tbody>
                                 <tr class="text-center" style="font-size: 12px;border-top:none;">
                                     <th scope="col"  style="width: 35%;">在籍状況 <br> Registered enrollment</th>
-                                    <td scope="col" class="align-middle" style="width: 15%;"></td>
+                                    <td scope="col" class="align-middle" style="width: 15%;"><?php echo $result9->registered_enrollment?></td>
                                     <th scope="col" style="width: 30%;">修学年数(小学校から最終学歴まで)<br>
  Total period of education (from elementary school to the last school attended). </th>
                                     <td scope="col" style="width: 15%;"><?php echo $resulteduhis->year?></td>
@@ -376,12 +378,6 @@ $html = '
             <label class="col-md-4">
                 <input type="radio" name="military_service" value="0" <?php if($result->military_service== '0'){ echo "checked='checked'"; } ?>>なしNo
             </label>
-            <!-- <label class="col-md-4">
-            <input type="radio" <?php if($result->military_service== "1") {echo "selected";} ?>>ありYes　　
-            </label>
-            <label class="col-md-4">
-            <input type="radio" <?php if($result->military_service== "0") {echo "selected";} ?>>なしNo
-            </label> -->
         </div>	
         
     </div>		
@@ -390,8 +386,8 @@ $html = '
             <th style="width: 15%;background:#f5f5f5;">				
                 詳細 <br> Details
             </th>
-            <td colspan="6" style="width:700px;">
-               
+            <td colspan="6" style="width:700px;text-align:left;">
+            <?php echo $result->military_service_details?>
             </td>
            
         </tr>
@@ -402,10 +398,10 @@ $html = '
         </p>
         <div class="radio" style="width:30%;float:right;">
             <label class="col-md-4">
-                <input type="radio" name="std_permission" value="1" <?php if($result->military_service== '1'){ echo "checked='checked'"; } ?>>ありYes　　
+                <input type="radio" name="jplearn_experience" value="1" <?php if($result->jplearn_experience== '1'){ echo "checked='checked'"; } ?>>ありYes　　
             </label>
             <label class="col-md-4">
-                <input type="radio" name="std_permission" value="0" <?php if($result->military_service== '0'){ echo "checked='checked'"; } ?>>なしNo
+                <input type="radio" name="jplearn_experience" value="0" <?php if($result->jplearn_experience== '0'){ echo "checked='checked'"; } ?>>なしNo
             </label>
         </div>	
         
@@ -444,10 +440,10 @@ $html = '
         </p>
         <div class="radio" style="width:30%;float:right;">
             <label class="col-md-4">
-                <input type="radio" name="std_permission" value="1" <?php if($result->military_service== '1'){ echo "checked='checked'"; } ?>>ありYes　　
+                <input type="radio" name="jplearn_achievement" value="1" <?php if($result->jplearn_achievement== '1'){ echo "checked='checked'"; } ?>>ありYes　　
             </label>
             <label class="col-md-4">
-                <input type="radio" name="std_permission" value="0" <?php if($result->military_service== '၀'){ echo "checked='checked'"; } ?>>なしNo
+                <input type="radio" name="jplearn_achievement" value="0" <?php if($result->jplearn_achievement== '0'){ echo "checked='checked'"; } ?>>なしNo
             </label>
         </div>	
     </div>		
@@ -504,8 +500,8 @@ $html = '
                                     <tr>
                                         <td style="font-size: 11px; text-align: center;"><?php echo $row6->fam_relationship?></td>
                                         <td style="font-size: 12px; text-align: center;"><?php echo $row6->fam_name?></td>
-                                        <td style="font-size: 11px; text-align: center;"><?php echo $row6->birthday?></td>
-                                        <td style="font-size: 11px; text-align: center;">-</td>
+                                        <td style="font-size: 11px; text-align: center;"><?php if($row6->birthday == ''){echo '-';}else{echo $row6->birthday;}?></td>
+                                        <td style="font-size: 11px; text-align: center;"><?php echo $row6->fam_nationality?></td>
                                         <td style="font-size: 11px; text-align: center;"><?php echo $row6->occupation?></td>
                                         <td style="font-size: 11px; text-align: center;"><?php echo $row6->address?></td>
                                     </tr>
@@ -620,7 +616,7 @@ $html = '
 			<th colspan="1" style="width: 10%;background:#f5f5f5;">
 				作成日 <br>Date	
 			</th>	
-            <td colspan="4"></td>		
+            <td colspan="4"><?php echo $splitted = date('Y', strtotime($result->created_at));?>-<?php echo $splitted = date('m', strtotime($result->created_at));?>-<?php echo $splitted = date('d', strtotime($result->created_at));?></td>		
             <th colspan="1" style="width: 15%;background:#f5f5f5;">
 				署名 <br> Signature
 			</th>	
