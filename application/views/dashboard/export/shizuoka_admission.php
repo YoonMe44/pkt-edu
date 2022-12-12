@@ -682,7 +682,7 @@ input {
 
  <table style="width:100%;">
   <tr style="border-bottom: 1px dotted #000000;">
-    <td></td>
+    <td><?php echo $result9->defraying_details?></td>
   </tr>
   <br>
   <tr style="border-top:none !important;border-bottom: 1px dotted #000000; ">

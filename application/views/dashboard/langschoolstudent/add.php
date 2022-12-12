@@ -1559,7 +1559,7 @@ applicant and your relationship to the applicant.','defraying_details', array('c
           echo form_input(array(
             'name' => 'defraying_details',
             'type' => 'text',
-            'value' => html_escape(set_value('phone',isset($result)?$result->defraying_details:''), ENT_QUOTES),
+            'value' => html_escape(set_value('defraying_details',isset($result)?$result->defraying_details:''), ENT_QUOTES),
             'placeholder' => 'Enter address!',
             'class' => 'form-control',
             'id' => 'defraying_details',
