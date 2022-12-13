@@ -763,32 +763,32 @@ $(function() {
         <span class="text-danger"><?php echo form_error('specific_plan_major '); ?></span>
   </div>
   <div class="form-group">
-        <?php echo form_label('What is your special ability?', 'specific_plan_major ', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'phone')); ?>
+        <?php echo form_label('What is your special ability?', 'special_ability ', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'special_ability')); ?>
         <?php
           echo form_input(array(
-            'name' => 'specific_plan_major',
+            'name' => 'special_ability',
             'type' => 'text',
-            'value' => html_escape(set_value('specific_plan_major',isset($result)?$result->specific_plan_major :''), ENT_QUOTES),
+            'value' => html_escape(set_value('special_ability',isset($result13)?$result13->special_ability :''), ENT_QUOTES),
             'placeholder' => 'Please Enter!',
             'class' => 'form-control',
-            'id' => 'specific_plan_major',
+            'id' => 'special_ability',
             'autocomplete' => ''));
         ?>
-        <span class="text-danger"><?php echo form_error('specific_plan_major '); ?></span>
+        <span class="text-danger"><?php echo form_error('special_ability '); ?></span>
   </div>
   <div class="form-group">
-        <?php echo form_label(' What are your hobbies?', 'specific_plan_major ', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'phone')); ?>
+        <?php echo form_label(' What are your hobbies?', 'hobbies ', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'phone')); ?>
         <?php
           echo form_input(array(
-            'name' => 'specific_plan_major',
+            'name' => 'hobbies',
             'type' => 'text',
-            'value' => html_escape(set_value('specific_plan_major',isset($result)?$result->specific_plan_major :''), ENT_QUOTES),
+            'value' => html_escape(set_value('hobbies',isset($result13)?$result13->hobbies :''), ENT_QUOTES),
             'placeholder' => 'Please Enter!',
             'class' => 'form-control',
-            'id' => 'specific_plan_major',
+            'id' => 'hobbies',
             'autocomplete' => ''));
         ?>
-        <span class="text-danger"><?php echo form_error('specific_plan_major '); ?></span>
+        <span class="text-danger"><?php echo form_error('hobbies '); ?></span>
   </div>
 </div>
 <!-- leftside -->
@@ -1123,32 +1123,32 @@ $(function() {
     </select>
   </div>
   <div class="form-group">
-  <?php echo form_label('What language can you use?', 'graduate_date', array( 'class' => 'form-control-label', 'id'=> '')); ?>
+  <?php echo form_label('What language can you use?', 'language_can_you_use', array( 'class' => 'form-control-label', 'id'=> '')); ?>
   <?php
           echo form_input(array(
-            'name' => 'graduate_date',
+            'name' => 'language_can_you_use',
             'type' => 'text',
-           // 'value' => html_escape(set_value('graduate_date',isset($result)?$result->graduate_date:''), ENT_QUOTES),
+           'value' => html_escape(set_value('language_can_you_use',isset($result13)?$result13->language_can_you_use:''), ENT_QUOTES),
             'placeholder' => 'Please Enter!',
             'class' => 'form-control',
-            'id' => 'graduate_date',
+            'id' => 'language_can_you_use',
             'autocomplete' => ''));
   ?>
-  <span class="text-danger"><?php echo form_error('graduate_date'); ?></span>
+  <span class="text-danger"><?php echo form_error('language_can_you_use'); ?></span>
   </div>
   <div class="form-group">
-  <?php echo form_label('What subjects are you good at?', 'graduate_date', array( 'class' => 'form-control-label', 'id'=> '')); ?>
+  <?php echo form_label('What subjects are you good at?', 'you_are_good_subject', array( 'class' => 'form-control-label', 'id'=> '')); ?>
   <?php
           echo form_input(array(
-            'name' => 'graduate_date',
+            'name' => 'you_are_good_subject',
             'type' => 'text',
-           // 'value' => html_escape(set_value('graduate_date',isset($result)?$result->graduate_date:''), ENT_QUOTES),
+           'value' => html_escape(set_value('you_are_good_subject',isset($result13)?$result13->you_are_good_subject:''), ENT_QUOTES),
             'placeholder' => 'Please Enter!',
             'class' => 'form-control',
-            'id' => 'graduate_date',
+            'id' => 'you_are_good_subject',
             'autocomplete' => ''));
   ?>
-  <span class="text-danger"><?php echo form_error('graduate_date'); ?></span>
+  <span class="text-danger"><?php echo form_error('you_are_good_subject'); ?></span>
   </div>
   <h6 class="spec_plan">Employment</h6>
   <div class="form-group">
@@ -1189,11 +1189,11 @@ $(function() {
     </select>
   </div>
   <div class="form-group">
-  <?php echo form_label('Are you allergic to any medicine or foods?', 'provide_english', array( 'class' => 'form-control-label', 'id'=> '')); ?>
+  <?php echo form_label('Are you allergic to any medicine or foods?', 'allergic_medicine', array( 'class' => 'form-control-label', 'id'=> 'allergic_medicine')); ?>
   <span class="badge badge-danger">Required</span>
-    <select name="provide_english" id="provide_english" class="admission_select">
-        <option value="1">Yes</option>
-        <option value="0">No</option>
+    <select name="allergic_medicine" id="allergic_medicine" class="admission_select">
+        <option value="1" <?php if($result13->allergic_medicine== "1") {echo "selected";} ?>>Yes</option>
+        <option value="0" <?php if($result13->allergic_medicine== "0") {echo "selected";} ?>>No</option>
     </select>
   </div>
   <div class="form-group">
@@ -1484,7 +1484,7 @@ $(function() {
             'id' => 'type_work_father',
             'autocomplete' => ''));
         ?>
-        <span class="text-danger"><?php echo form_error('address'); ?></span>
+        <span class="text-danger"><?php echo form_error('type_work_father'); ?></span>
        </div>
        <div class="form-group">
         <?php echo form_label('Name of the place where your mother is working ','mother_work_place', array('class' => '')); ?>
@@ -1532,7 +1532,7 @@ $(function() {
             'id' => 'consent_name',
             'autocomplete' => ''));
         ?>
-        <span class="text-danger"><?php echo form_error('family_mail'); ?></span>
+        <span class="text-danger"><?php echo form_error('consent_name'); ?></span>
        </div>
 
        <div class="form-group">
@@ -1552,13 +1552,13 @@ $(function() {
           echo form_input(array(
             'name' => 'consent_address',
             'type' => 'text',
-            'value' => html_escape(set_value('phone',isset($result13)?$result13->consent_address:''), ENT_QUOTES),
+            'value' => html_escape(set_value('consent_address',isset($result13)?$result13->consent_address:''), ENT_QUOTES),
             'placeholder' => 'Enter address!',
             'class' => 'form-control',
             'id' => 'consent_address',
             'autocomplete' => ''));
         ?>
-        <span class="text-danger"><?php echo form_error('address'); ?></span>
+        <span class="text-danger"><?php echo form_error('consent_address'); ?></span>
        </div>
        <div class="form-group">
         <?php echo form_label(' Email','consent_email', array('class' => '')); ?>
@@ -1573,7 +1573,7 @@ $(function() {
             'id' => 'consent_email',
             'autocomplete' => ''));
         ?>
-        <span class="text-danger"><?php echo form_error('address'); ?></span>
+        <span class="text-danger"><?php echo form_error('consent_email'); ?></span>
        </div>
        <div class="form-group">
         <?php echo form_label(' Phone','consent_tel', array('class' => '')); ?>
@@ -1676,9 +1676,9 @@ $(function() {
        <div class="form-group">
         <?php echo form_label('Method of payment', 'payment_method', array( 'class' => '', 'id'=> '')); ?>
           <select name="payment_method" id="payment_method" class="admission_select">
-              <option value="father">Bank Transfer (Overseas Remittance)</option>
-              <option value="mother">Credit Card</option>
-              <option value="other">Others</option>
+              <option value="Bank Transfer (Overseas Remittance)">Bank Transfer (Overseas Remittance)</option>
+              <option value="Credit Card">Credit Card</option>
+              <option value="Others">Others</option>
           </select>
       </div>
       <div class="form-group">
@@ -1718,10 +1718,10 @@ applicant and your relationship to the applicant.','defraying_details', array('c
        <div class="form-group">
         <?php echo form_label('Relation', 'defraying_relation', array( 'class' => '', 'id'=> '')); ?>
           <select name="defraying_relation" id="defraying_relation" class="admission_select">
-              <option value="father">Father</option>
-              <option value="mother">Mother</option>
-              <option value="brother">Brother/Sister</option>
-              <option value="other">Others</option>
+              <option value="Father">Father</option>
+              <option value="Mother">Mother</option>
+              <option value="Brother/Sister">Brother/Sister</option>
+              <option value="Others">Others</option>
           </select>
       </div>
 

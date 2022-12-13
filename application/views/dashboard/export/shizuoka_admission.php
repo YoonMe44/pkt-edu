@@ -389,7 +389,7 @@ input {
     <input type="checkbox" <?php if($result->martial_status == '0'){ echo "checked='checked'"; } ?>><label for="" style="font-size: 14px;">なし < Single ></label>
     </td>
     <th style="width: 28%;background-color:none !important;border: none !important;"> <span style="font-size: 12px;">配偶者名 < Name of your spouse > </span></th>
-    <td  style="width: 8%;border: none !important;"></td>
+    <td  style="width: 8%;border: none !important;"><?php if($result->partaner_name == ''){echo '-';}else{echo "$result->partaner_name";}?></td>
   </tr>
 </table>
 <br>
@@ -499,8 +499,8 @@ input {
 <div style="width: 100%;">
 <h4 style="width:50%;float:left;font-weight:bold;padding-left:10px;margin:0px;font-family: sjis;">10. 仕事の経験 < Vocational experience(s) ></h4>
 <p style="width:40%;font-size: 14px;text-align:left;float:right;">
-<input type="checkbox"><label for="" style="font-size: 14px;">ある(Yes)・</label>
-<input type="checkbox"><label for="" style="font-size: 14px;">なし (No)</label>
+<input type="checkbox" name="employment_experience" value="1" <?php if($result->employment_experience== '1'){ echo "checked='checked'"; } ?>><label for="" style="font-size: 14px;" >ある(Yes)・</label>
+<input type="checkbox" name="employment_experience" value="0" <?php if($result->employment_experience== '0'){ echo "checked='checked'"; } ?>><label for="" style="font-size: 14px;">なし (No)</label>
 </p>
 </div>
     <table style="width:100%;">
@@ -757,13 +757,13 @@ Further, when the above person applies for an extension of period of stay, I wil
 </p>
 <div style="width: 100%;">
 <div style="width: 40%;float:left;">
-<p style="font-size: 14px;"><input type="checkbox" style="font-size: 19px;line-height:1px;" >Bank Transfer </span><span style="font-size: 11px;">(Overseas Remittance)</span></p>
+<p style="font-size: 14px;"><input type="checkbox" style="font-size: 19px;line-height:1px;" <?php if($result9->payment_method == 'Bank Transfer (Overseas Remittance)'){ echo "checked='checked'"; } ?>>Bank Transfer </span><span style="font-size: 11px;">(Overseas Remittance)</span></p>
 </div>
 <div style="width: 20%;padding-left:20px;float:left;">
-<p style="font-size: 14px;"><input type="checkbox" style="font-size: 19px;line-height:1px;" >Credit  Card</p>
+<p style="font-size: 14px;"><input type="checkbox" style="font-size: 19px;line-height:1px;" <?php if($result9->payment_method == 'Credit Card'){ echo "checked='checked'"; } ?>>Credit  Card</p>
 </div>
 <div style="width: 20%;padding-left:20px;float:right;">
-<p for="" style="font-size: 14px;"><input type="checkbox" style="font-size: 19px;line-height:1px;" >Others()</p>
+<p for="" style="font-size: 14px;"><input type="checkbox" style="font-size: 19px;line-height:1px;" <?php if($result9->payment_method == 'Others'){ echo "checked='checked'"; } ?>>Others()</p>
 </div>
 </div>
 </div>
@@ -786,7 +786,7 @@ Further, when the above person applies for an extension of period of stay, I wil
  <table style="width: 100%;">
   <tr style="border-top: none !important;border-left: none !important;border-right: none !important;">
     <th style="width: 10%;background-color:none !important;border-right: none !important;font-size:14px;">Name:</th>
-    <td style="width: 90%;border-left: none !important;font-size:14px;"></td>
+    <td style="width: 90%;border-left: none !important;font-size:14px;"><?php echo $result9->defraying_name ?></td>
   </tr> 
  </table>
  <table style="width: 100%;">
@@ -800,7 +800,7 @@ Further, when the above person applies for an extension of period of stay, I wil
  <table style="width: 100%;">
   <tr style="border-top: none !important;border-left: none !important;border-right: none !important;">
     <th style="width: 10%;background-color:none !important;border-right: none !important;font-size:14px;">TEL(home):</th>
-    <td style="width: 30%;border-left: none !important;font-size:14px;"></td>
+    <td style="width: 30%;border-left: none !important;font-size:14px;"><?php echo $result9->defraying_tel ?></td>
   </tr>
  </table>
  </div>
@@ -808,7 +808,7 @@ Further, when the above person applies for an extension of period of stay, I wil
  <table style="width: 100%;">
   <tr style="border-top: none !important;border-left: none !important;border-right: none !important;">
     <th style="width: 10%;background-color:none !important;border-right: none !important;font-size:14px;">TEL(mobile):</th>
-    <td style="width: 30%;border-left: none !important;font-size:14px;"></td>
+    <td style="width: 30%;border-left: none !important;font-size:14px;"><?php echo $result9->defraying_tel ?></td>
   </tr>
  </table>
  </div>
@@ -818,16 +818,16 @@ Further, when the above person applies for an extension of period of stay, I wil
   <tr style="border-top: none !important;border-left: none !important;border-right: none !important;">
     <th style="width: 20%;background-color:none !important;border-right: none !important;font-size:14px;">Relationship to the applicant:</th>
     <td style="width: 15%;border-left: none !important;border-right: none !important;font-size:14px;">
-      <input type="checkbox" style="font-size: 16px;"><span style="font-size:14px;">Father</span>
+      <input type="checkbox" style="font-size: 16px;" <?php if($result9->defraying_relation == 'Father'){ echo "checked='checked'"; } ?>><span style="font-size:14px;">Father</span>
     </td>
     <td style="width: 15%;border-left: none !important;border-right: none !important;font-size:14px;">
-     <input type="checkbox" style="font-size: 16px;"><span style="font-size:14px;">Mother</span>
+     <input type="checkbox" style="font-size: 16px;" <?php if($result9->defraying_relation == 'Mother'){ echo "checked='checked'"; } ?>><span style="font-size:14px;">Mother</span>
     </td>
     <td style="width: 15%;border-left: none !important;border-right: none !important;font-size:14px;">
-     <input type="checkbox" style="font-size: 16px;"><span style="font-size:14px;">Brother/Sister</span>
+     <input type="checkbox" style="font-size: 16px;" <?php if($result9->defraying_relation == 'Brother/Sister'){ echo "checked='checked'"; } ?>><span style="font-size:14px;">Brother/Sister</span>
     </td>
     <td style="width: 15%;border-left: none !important;font-size:14px;">
-      <input type="checkbox" style="font-size: 16px;"><span style="font-size:14px;">Other()</span>
+      <input type="checkbox" style="font-size: 16px;" <?php if($result9->defraying_relation == 'Others'){ echo "checked='checked'"; } ?>><span style="font-size:14px;">Other()</span>
     </td>
   </tr>
  </table>
@@ -835,13 +835,13 @@ Further, when the above person applies for an extension of period of stay, I wil
  <table style="width: 100%;">
   <tr style="border-top: none !important;border-left: none !important;border-right: none !important;">
     <th style="width: 30%;background-color:none !important;border-right: none !important;font-size:14px;">Name of the company (Type of business):</th>
-    <td style="width: 60%;border-left: none !important;font-size:14px;"></td>
+    <td style="width: 60%;border-left: none !important;font-size:14px;"><?php echo $result9->defraying_company ?></td>
   </tr>
  </table>
  <table style="width: 100%;">
   <tr style="border-top: none !important;border-left: none !important;border-right: none !important;">
     <th style="width: 30%;background-color:none !important;border-right: none !important;font-size:14px;">TEL(workplace) :</th>
-    <td style="width: 60%;border-left: none !important;font-size:14px;"></td>
+    <td style="width: 60%;border-left: none !important;font-size:14px;"><?php echo $result9->defraying_work_tel ?></td>
   </tr>
  </table>
 
@@ -850,7 +850,11 @@ Further, when the above person applies for an extension of period of stay, I wil
  <table style="width: 100%;">
   <tr style="border-top: none !important;border-left: none !important;border-right: none !important;">
     <th style="width: 10%;background-color:none !important;border-right: none !important;font-size:14px;">Signature:</th>
-    <td style="width: 30%;border-left: none !important;font-size:14px;"></td>
+    <td style="width: 30%;border-left: none !important;font-size:14px;text-align:left;">
+    <?php if(!empty($result->image_file)) { ?>
+                             <img style="width:10%"; src="<?php echo base_url('upload/assets/adm/usr/'.$result->sign_file); ?>" width="100px;" class="pb-1">
+                            <?php } ?>
+  </td>
   </tr>
  </table>
  </div>
@@ -858,9 +862,9 @@ Further, when the above person applies for an extension of period of stay, I wil
  <table style="width: 100%;">
   <tr style="border-top: none !important;border-left: none !important;border-right: none !important;">
     <th style="width: 10%;background-color:none !important;border-right: none !important;font-size:14px;">Date:</th>
-    <td style="width: 20%;border-left: none !important;border-right: none !important;font-size:1px;text-align:right;"> <span style="font-size: 11px;"> year/</span></td>
-    <td style="width: 20%;border-left: none !important;border-right: none !important;font-size:14px;text-align:right;"><span style="font-size: 11px;"> month/ </span></td>
-    <td style="width: 20%;border-left: none !important;border-right: none !important;font-size:14px;text-align:right;"><span style="font-size: 11px;"> day </span></td>
+    <td style="width: 20%;border-left: none !important;border-right: none !important;font-size:14px;text-align:right;"> <?php echo $splitted = date('Y', strtotime($result->created_at));?><span style="font-size: 11px;"> year/</span></td>
+    <td style="width: 20%;border-left: none !important;border-right: none !important;font-size:14px;text-align:right;"><?php echo $splitted = date('m', strtotime($result->created_at));?><span style="font-size: 11px;"> month/ </span></td>
+    <td style="width: 20%;border-left: none !important;border-right: none !important;font-size:14px;text-align:right;"><?php echo $splitted = date('d', strtotime($result->created_at));?><span style="font-size: 11px;"> day </span></td>
   </tr>
  </table>
  </div>
@@ -983,7 +987,7 @@ Further, when the above person applies for an extension of period of stay, I wil
           foreach($result6 as $row6){
   ?> 
   <tr>
-    <td><?php echo $row6->fam_name?></td>
+    <td><?php if($row6->fam_name == ''){echo '-';}else{echo $row6->fam_name;}?></td>
     <td><?php echo $row6->fam_relationship?></td>
     <td><?php echo $row6->fam_gender?></td>
     <td><?php echo $row6->fam_age?></td>
@@ -1000,7 +1004,7 @@ Further, when the above person applies for an extension of period of stay, I wil
 <div style="width: 100%;">
   <table style="width: 100%;float:right;">
     <tr style="border-top: none !important;border-right:none!important;border-left:none!important;">
-    <td style="width:100%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;"></td>
+    <td style="width:100%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;"><?php if($result9->father_work_place){echo "$result9->father_work_place";}else{echo"-";} ?></td>
     </tr>
   </table>
 </div>
@@ -1011,7 +1015,7 @@ Further, when the above person applies for an extension of period of stay, I wil
 <div style="width: 100%;">
   <table style="width: 100%;float:right;">
     <tr style="border-top: none !important;border-right:none!important;border-left:none!important;">
-    <td style="width:100%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;">-</td>
+    <td style="width:100%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;"><?php if($result9->type_work_father){echo "$result9->type_work_father";}else{echo"-";} ?></td>
     </tr>
   </table>
 </div>
@@ -1026,7 +1030,7 @@ Further, when the above person applies for an extension of period of stay, I wil
 <div style="width: 100%;">
   <table style="width: 100%;float:right;">
     <tr style="border-top: none !important;border-right:none!important;border-left:none!important;">
-    <td style="width:100%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;">-</td>
+    <td style="width:100%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;"><?php if($result9->mother_work_place){echo "$result9->mother_work_place";}else{echo"-";} ?></td>
     </tr>
   </table>
 </div>
@@ -1037,7 +1041,7 @@ Further, when the above person applies for an extension of period of stay, I wil
 <div style="width: 100%;">
   <table style="width: 100%;float:right;">
     <tr style="border-top: none !important;border-right:none!important;border-left:none!important;">
-    <td style="width:100%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;">-</td>
+    <td style="width:100%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;"><?php if($result9->type_work_mother){echo "$result9->type_work_mother";}else{echo"-";} ?></td>
     </tr>
   </table>
 </div>
@@ -1047,7 +1051,7 @@ Further, when the above person applies for an extension of period of stay, I wil
 <p style="width:60%;font-size:13px;float:left;">使える言語 < What language can you use? > </p>
 <div style="width: 100%;">
 <section class="personal-info">
-    <p class="note" style="width: 100%;padding: 30px 0px;border: 1px solid #000000;"></p>
+    <p class="note" style="width: 100%;padding: 30px 10px;border: 1px solid #000000;"><?php if($result9->language_can_you_use){echo "$result9->language_can_you_use";}else{echo"-";} ?></p>
 </section>
 </div>
 </div>
@@ -1056,7 +1060,7 @@ Further, when the above person applies for an extension of period of stay, I wil
 <p style="width:60%;font-size:13px;float:left;">得意な学科 < What subjects are you good at? > </p>
 <div style="width: 100%;">
 <section class="personal-info">
-    <p class="note" style="width: 100%;padding: 30px 0px;border: 1px solid #000000;"></p>
+    <p class="note" style="width: 100%;padding: 30px 10px;border: 1px solid #000000;"><?php if($result9->you_are_good_subject){echo "$result9->you_are_good_subject";}else{echo"-";} ?></p>
 </section>
 </div>
 </div>
@@ -1065,7 +1069,7 @@ Further, when the above person applies for an extension of period of stay, I wil
 <p style="width:60%;font-size:13px;float:left;">特技 < What is your special ability? >  </p>
 <div style="width: 100%;">
 <section class="personal-info">
-    <p class="note" style="width: 100%;padding: 30px 0px;border: 1px solid #000000;"></p>
+    <p class="note" style="width: 100%;padding: 30px 10px;border: 1px solid #000000;"><?php if($result9->special_ability){echo "$result9->special_ability";}else{echo"-";} ?></p>
 </section>
 </div>
 </div>
@@ -1074,7 +1078,7 @@ Further, when the above person applies for an extension of period of stay, I wil
 <p style="width:60%;font-size:13px;float:left;">趣味 < What are your hobbies? >  </p>
 <div style="width: 100%;">
 <section class="personal-info">
-    <p class="note" style="width: 100%;padding: 30px 0px;border: 1px solid #000000;"></p>
+    <p class="note" style="width: 100%;padding: 30px 10px;border: 1px solid #000000;"><?php if($result9->hobbies){echo "$result9->hobbies";}else{echo"-";} ?></p>
 </section>
 </div>
 </div>
@@ -1093,12 +1097,14 @@ Further, when the above person applies for an extension of period of stay, I wil
 <p style="width: 70%;text-align:left;font-size:16px;float:left;">
  <span style="font-size:13px;font-family: sjis;">薬や食べ物のアレルギーがありますか？ <span style="font-size: 11px;">〈Are you allergic to any medicine or foods?〉<span></span>
 </p>
+
 <div style="width: 30%;float:right;">
 <div style="width: 45%;float:left;">
-<p style="font-size: 14px;"><input type="radio" style="font-size: 19px;line-height:1px;" >はい Yes</p>
+
+<p style="font-size: 14px;"><input type="radio" name="allergic_medicine" value="1" style="font-size: 19px;line-height:1px;" <?php if($result9->allergic_medicine== '1'){ echo "checked='checked'"; } ?>>はい Yes</p>
 </div>
 <div style="width: 45%;float:left;">
-<p style="font-size: 14px;"><input type="radio" style="font-size: 19px;line-height:1px;" >いいえ No</p>
+<p style="font-size: 14px;"><input type="radio" name="allergic_medicine" value="0" style="font-size: 19px;line-height:1px;" <?php if($result9->allergic_medicine== '0'){ echo "checked='checked'"; } ?>>いいえ No</p>
 </div>
 </div>
 <div style="width: 100%;">
@@ -1109,7 +1115,7 @@ If you select ”Yes”, please tell us in detal about your allegy.
 <div style="width: 40%;float:right;">
 <table style="width: 100%;">
   <tr style="border-top: none !important;border-left: none !important;border-right: none !important;">
-    <td style="width: 30%;border-left: none !important;font-size:14px;">-</td>
+    <td style="width: 30%;border-left: none !important;font-size:14px;"><?php if($result9->allergic_medicine_details){echo "$result9->allergic_medicine_details";}else{echo"-";} ?></td>
   </tr>
  </table>
  </div>
@@ -1135,7 +1141,7 @@ and telephone number etc.　Please show us the copy of Residence card for confir
   ?> 
   <tr>
     <td><?php echo $row7->ja_fam_name?></td>
-    <td><?php echo $row7->ja_fam_date_birth?></td>
+    <td><?php if($row7->ja_fam_date_birth == ''){echo '-';}else{echo $row7->ja_fam_date_birth;}?></td>
     <td><?php echo $row7->ja_fam_relationship?></td>
     <td><?php echo $row7->ja_fam_work_place?></td>
     <td><?php echo $row7->ja_fam_address?></td>
@@ -1147,7 +1153,7 @@ and telephone number etc.　Please show us the copy of Residence card for confir
 <p style="width: 100%;font-size: 14px;">Ⅳ.　日本人の友人、知り合いがいれば書いてください。(氏名、住所、電話、関係など) </p> 
 <p>you/your family have Japanese friends or acquaintances, please write his/her name, address, <br>  phone number, relationship, etc.</p>
 <section class="personal-info">
-    <p class="note" style="width: 100%;padding: 140px 0px;border: 1px solid #000000;"></p>
+    <p class="note" style="width: 100%;padding: 140px 0px;border: 1px solid #000000;"><?php echo $resultfamjapan->ja_fam_name?></p>
 </section>
 <br><br>
 <p style="width: 100%;font-size: 14px;">Ⅴ.　あなたと家族の写真をこの下に貼って下さい。<span style="font-size: 12px;"> Please attach the picture of you and your family below this.</span> </p>
@@ -1187,9 +1193,9 @@ Applicant name
     <th style="width:40%;font-size:14px;background-color:none !important;border-top:none!important;border-right:none!important;border-left:none!important;font-size:15px;text-align:left;font-weight:normal;">
     生年月日 <br> Date of birth  
     </th>
-      <td style="width:23%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;text-align:right;">年</td>
-      <td style="width:23%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;text-align:right;">月</td>
-      <td style="width:23%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;text-align:right;">日</td>
+      <td style="width:23%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;text-align:right;"><?php echo $splitted = date('Y', strtotime($result->date_of_birthday));?>年</td>
+      <td style="width:23%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;text-align:right;"><?php echo $splitted = date('m', strtotime($result->date_of_birthday));?>月</td>
+      <td style="width:23%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;text-align:right;"><?php echo $splitted = date('d', strtotime($result->date_of_birthday));?>日</td>
     </tr>
 </table>
 </div>
@@ -1197,7 +1203,7 @@ Applicant name
 <table style="width: 90%;">
   <tr style="border-top: none !important;border-right:none!important;border-left:none!important;">
     <th style="width:20%;font-size:14px;background-color:none !important;border-top:none!important;border-right:none!important;border-left:none!important;font-size:15px;text-align:left;font-weight:normal;">国籍 <br> Nationality</th>
-    <td style="width:20%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;text-align:right;"><?php echo $result->info_nationality?></td>
+    <td style="width:20%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;text-align:left;"><?php echo $result->info_nationality?></td>
   </tr>
 </table>
 </div>
@@ -1225,9 +1231,9 @@ Applicant name
 <div style="width:40% ;float:right">
 <table style="width: 100%;text-align:right">
     <tr style="border-top: none !important;border-right:none!important;border-left:none!important;float:right">
-      <td style="width:23%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;text-align:right;">年</td>
-      <td style="width:23%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;text-align:right;">月</td>
-      <td style="width:23%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;text-align:right;">日</td>
+      <td style="width:23%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;text-align:right;"><?php echo $splitted = date('Y', strtotime($result->created_at));?>年</td>
+      <td style="width:23%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;text-align:right;"><?php echo $splitted = date('m', strtotime($result->created_at));?>月</td>
+      <td style="width:23%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;text-align:right;"><?php echo $splitted = date('d', strtotime($result->created_at));?>日</td>
     </tr>
 </table>
 <table style="width: 100%;text-align:right">
@@ -1241,7 +1247,11 @@ Applicant name
 <table style="width: 100%;text-align:right">
     <tr style="border-top: none !important;border-bottom: none !important;border-right:none!important;border-left:none!important;float:right">
       <td style="width:23%;font-size:14px;border-top:none !important;border-bottom: none !important;border-right:none!important;border-left:none!important;text-align:right;">（署名　Signature） </td>
-      <td style="width:23%;font-size:14px;border-top:none !important;border-bottom: none !important;border-right:none!important;border-left:none!important;text-align:right;"></td>
+      <td style="width:23%;font-size:14px;border-top:none !important;border-bottom: none !important;border-right:none!important;border-left:none!important;text-align:center;">
+      <?php if(!empty($result->image_file)) { ?>
+    <img style="width:20%;" src="<?php echo base_url('upload/assets/adm/usr/'.$result->sign_file); ?>" width="150px;">
+ <?php } ?>
+    </td>
     </tr>
 </table>
 </div>
@@ -1250,7 +1260,7 @@ Applicant name
   <table style="width: 100%;float:right;">
     <tr style="border-top: none !important;border-right:none!important;border-left:none!important;">
     <th style="width:20%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;background-color:none !important;text-align:center;">同意者氏名 <br> Name of person who <br>gave the consent </th>
-    <td style="width:80%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;"></td>
+    <td style="width:80%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;"><?php echo $result9->consent_name?></td>
     </tr>
   </table>
 </div>
@@ -1259,16 +1269,16 @@ Applicant name
     <tr style="border-top: none !important;border-right:none!important;border-left:none!important;">
     <th style="width:10%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;background-color:none !important;text-align:center;">続柄<br>Relation </th>
     <td style="width:20%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;">
-      <input type="checkbox"><label for="">父親 Father </label>
+      <input type="checkbox" value="father" <?php if($result9->consent_relation == 'father'){ echo "checked='checked'"; } ?>><label for="">父親 Father </label>
     </td>
     <td style="width:15%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;">
-      <input type="checkbox"><label for="">母親 Mother </label>
+      <input type="checkbox" value="mother" <?php if($result9->consent_relation == 'mother'){ echo "checked='checked'"; } ?>><label for="">母親 Mother </label>
     </td>
     <td style="width:25%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;">
-      <input type="checkbox"><label for="">兄弟/姉妹 Brother／Sister  </label>
+      <input type="checkbox" value="brother" <?php if($result9->consent_relation == 'brother'){ echo "checked='checked'"; } ?>><label for="">兄弟/姉妹 Brother／Sister  </label>
     </td>
     <td style="width:20%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;">
-      <input type="checkbox"><label for="">その他 Others ()</label>
+      <input type="checkbox" value="other" <?php if($result9->consent_relation == 'other'){ echo "checked='checked'"; } ?>><label for="">その他 Others ()</label>
     </td>
     
     </tr>
@@ -1278,7 +1288,7 @@ Applicant name
   <table style="width: 100%;float:right;">
     <tr style="border-top: none !important;border-right:none!important;border-left:none!important;">
     <th style="width:10%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;background-color:none !important;text-align:center;">住所 <br>Address </th>
-    <td style="width:90%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;"></td>
+    <td style="width:90%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;"><?php echo $result9->consent_address?></td>
     </tr>
   </table>
 </div>
@@ -1290,7 +1300,7 @@ Applicant name
   <table style="width: 100%;float:right;">
     <tr style="border-top: none !important;border-right:none!important;border-left:none!important;">
     <th style="width:20%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;background-color:none !important;text-align:center;">電話番号 <br> Telephone</th>
-    <td style="width:60%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;"></td>
+    <td style="width:60%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;"><?php echo $result9->consent_tel?></td>
     </tr>
   </table>
 </div>
@@ -1298,7 +1308,7 @@ Applicant name
   <table style="width: 100%;float:right;">
     <tr style="border-top: none !important;border-right:none!important;border-left:none!important;">
     <th style="width:50%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;background-color:none !important;text-align:center;">Eメール(あれば）<br> E-mail（if you have) </th>
-    <td style="width:50%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;"></td>
+    <td style="width:50%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;"><?php echo $result9->consent_email?></td>
     </tr>
   </table>
 </div>

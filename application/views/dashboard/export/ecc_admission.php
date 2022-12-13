@@ -484,7 +484,7 @@ History of Employment (Write in order, ending with the most recent employment.)<
     <section class="personal-info" style="width:100%;float:right;padding-top:12px;"> 
     <div style="width: 45%;float:right">
     <p style="padding-left:150px;"><?php if(!empty($result->image_file)) { ?>
-    <img style="width:40%"; src="<?php echo base_url('upload/assets/adm/usr/'.$result->sign_file); ?>" width="150px;" class="pb-1">
+    <img style="width:40%;" src="<?php echo base_url('upload/assets/adm/usr/'.$result->sign_file); ?>" width="150px;" class="pb-1">
  <?php } ?></p>
   <p>署名 Signature:<span>____________________________</span></p>
 </div>

@@ -982,7 +982,7 @@ $(function() {
           echo form_input(array(
             'name' => 'graduate_date',
             'type' => 'date',
-           // 'value' => html_escape(set_value('graduate_date',isset($result)?$result->graduate_date:''), ENT_QUOTES),
+            'value' => html_escape(set_value('graduate_date',isset($result)?$result->graduate_date:''), ENT_QUOTES),
             'placeholder' => 'Please Enter!',
             'class' => 'form-control',
             'id' => 'graduate_date',
@@ -1004,13 +1004,13 @@ $(function() {
           echo form_input(array(
             'name' => 'language_can_you_use',
             'type' => 'text',
-           // 'value' => html_escape(set_value('graduate_date',isset($result)?$result->graduate_date:''), ENT_QUOTES),
+           'value' => html_escape(set_value('language_can_you_use',isset($result)?$result->language_can_you_use:''), ENT_QUOTES),
             'placeholder' => 'Please Enter!',
             'class' => 'form-control',
             'id' => 'language_can_you_use',
             'autocomplete' => ''));
   ?>
-  <span class="text-danger"><?php echo form_error('graduate_date'); ?></span>
+  <span class="text-danger"><?php echo form_error('language_can_you_use'); ?></span>
   </div>
   <div class="form-group">
   <?php echo form_label('What subjects are you good at?', 'you_are_good_subject', array( 'class' => 'form-control-label', 'id'=> '')); ?>
@@ -1018,7 +1018,7 @@ $(function() {
           echo form_input(array(
             'name' => 'you_are_good_subject',
             'type' => 'text',
-           // 'value' => html_escape(set_value('graduate_date',isset($result)?$result->graduate_date:''), ENT_QUOTES),
+           'value' => html_escape(set_value('you_are_good_subject',isset($result)?$result->you_are_good_subject:''), ENT_QUOTES),
             'placeholder' => 'Please Enter!',
             'class' => 'form-control',
             'id' => 'you_are_good_subject',
@@ -1057,9 +1057,9 @@ $(function() {
         <span class="text-danger"><?php echo form_error('will_you_return'); ?></span>
   </div>
   <div class="form-group">
-  <?php echo form_label('Is it possible to provide in English? ', 'provide_english', array( 'class' => 'form-control-label', 'id'=> '')); ?>
+  <?php echo form_label('Is it possible to provide in English? ', 'allergic_medicine', array( 'class' => 'form-control-label', 'id'=> 'allergic_medicine')); ?>
   <span class="badge badge-danger">Required</span>
-    <select name="provide_english" id="provide_english" class="admission_select">
+    <select name="allergic_medicine" id="allergic_medicine" class="admission_select">
         <option value="1">Yes</option>
         <option value="0">No</option>
     </select>
@@ -1402,7 +1402,7 @@ $(function() {
             'id' => 'consent_name',
             'autocomplete' => ''));
         ?>
-        <span class="text-danger"><?php echo form_error('family_mail'); ?></span>
+        <span class="text-danger"><?php echo form_error('consent_name'); ?></span>
        </div>
 
        <div class="form-group">
@@ -1422,7 +1422,7 @@ $(function() {
           echo form_input(array(
             'name' => 'consent_address',
             'type' => 'text',
-            'value' => html_escape(set_value('phone',isset($result)?$result->consent_address:''), ENT_QUOTES),
+            'value' => html_escape(set_value('consent_address',isset($result)?$result->consent_address:''), ENT_QUOTES),
             'placeholder' => 'Enter address!',
             'class' => 'form-control',
             'id' => 'consent_address',
@@ -1443,7 +1443,7 @@ $(function() {
             'id' => 'consent_email',
             'autocomplete' => ''));
         ?>
-        <span class="text-danger"><?php echo form_error('address'); ?></span>
+        <span class="text-danger"><?php echo form_error('consent_email'); ?></span>
        </div>
        <div class="form-group">
         <?php echo form_label(' Phone','consent_tel', array('class' => '')); ?>
@@ -1546,9 +1546,9 @@ $(function() {
        <div class="form-group">
         <?php echo form_label('Method of payment', 'payment_method', array( 'class' => '', 'id'=> '')); ?>
           <select name="payment_method" id="payment_method" class="admission_select">
-              <option value="father">Bank Transfer (Overseas Remittance)</option>
-              <option value="mother">Credit Card</option>
-              <option value="other">Others</option>
+              <option value="Bank Transfer (Overseas Remittance)">Bank Transfer (Overseas Remittance)</option>
+              <option value="Credit Card">Credit Card</option>
+              <option value="Others">Others</option>
           </select>
       </div>
       <div class="form-group">
@@ -1589,10 +1589,10 @@ applicant and your relationship to the applicant.','defraying_details', array('c
        <div class="form-group">
         <?php echo form_label('Relation', 'defraying_relation', array( 'class' => '', 'id'=> '')); ?>
           <select name="defraying_relation" id="defraying_relation" class="admission_select">
-              <option value="father">Father</option>
-              <option value="mother">Mother</option>
-              <option value="brother">Brother/Sister</option>
-              <option value="other">Others</option>
+              <option value="Father">Father</option>
+              <option value="Mother">Mother</option>
+              <option value="Brother/Sister">Brother/Sister</option>
+              <option value="Others">Others</option>
           </select>
       </div>
 

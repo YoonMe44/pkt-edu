@@ -770,7 +770,7 @@ p{
 </div>
 
 <div class="form-group">
-    <?php echo form_label('Tel(workplace)','type_work_father', array('class' => '')); ?>
+    <?php echo form_label('Tel(workplace)','defraying_work_tel', array('class' => '')); ?>
     <p class="comfirm_val" id="defraying_work_tel" name="defraying_work_tel"><?php echo $other_info['defraying_work_tel']; ?></p>
 </div>
 
