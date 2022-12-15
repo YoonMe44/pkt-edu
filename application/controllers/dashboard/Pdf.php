@@ -214,7 +214,9 @@ class Pdf extends CI_Controller {
             $data['resultfamjapan'] = $this->Pdf_Model->getFamJapan($id);
             $data['result8'] = $this->Pdf_Model->getJLSDetail8($id);
             $data['result9'] = $this->Pdf_Model->getJLSDetail9($id);
-
+            $data['result10'] = $this->Pdf_Model->getJLSDetail10($id);
+//             echo '<pre>';
+// var_dump($data['result10']);
            // $html = $this->load->view('dashboard/export/ecc_interview', $data['member'], true);
             $html = $this->load->view('dashboard/export/fukuoka_admission', $data, true);
            // var_dump($html);

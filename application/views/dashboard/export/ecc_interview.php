@@ -161,9 +161,9 @@ $html = '
 	</div><br/>
     <div style="display: inline;padding: 0px;margin:0px;">
         <span class="ecc_date"  style="">Date:</span>
-        <span class="ecc_date"  style=""><span><?php echo $splitted = date('Y', strtotime($result->created_at));?></span>year</span>
-        <span class="ecc_date"  style=""><span><?php echo $splitted = date('m', strtotime($result->created_at));?></span>month</span>
-        <span class="ecc_date"  style=""><span><?php echo $splitted = date('d', strtotime($result->created_at));?></span>date</span>
+        <span class="ecc_date"  style=""><span><?php echo $splitted = date('Y', strtotime($result->register_date));?></span>year</span>
+        <span class="ecc_date"  style=""><span><?php echo $splitted = date('m', strtotime($result->register_date));?></span>month</span>
+        <span class="ecc_date"  style=""><span><?php echo $splitted = date('d', strtotime($result->register_date));?></span>date</span>
     </div>
 </section>
 <section class="eligibility">	
@@ -395,7 +395,7 @@ $html = '
 <div style="width:100%;display: inline;">
 <p  style="width:100%;display:inline;">
     <p style="width:100px;float:left;font-size:13px;"><?php if($result->have_you_visited_jp == '1'){echo 'Yes';}else{echo 'No';}?></p>
-    <p style="width:100px;float:left;font-size:13px;"> ( Status :<?php echo $result->have_you_visited_jp?></p> 
+    <p style="width:200px;float:left;font-size:13px;"> ( Status :<?php echo $result->visited_jp_status?></p> 
     <p style="width:180px;float:left;font-size:13px;">Date of Entry:<?php echo $result->visited_date?></p>
     <p style="width:200px ;float:left;font-size:13px;">Date of Departure:<?php echo $result->date_of_departure?>　) </p>
 </p> 

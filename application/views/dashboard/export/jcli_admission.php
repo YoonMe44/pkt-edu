@@ -156,14 +156,14 @@ $html = '
                 回数 <br> No. of times
                 </th>
                 <td colspan="1">
-                <?php echo $result->eligibility_details?>
+                <?php echo $result->entry_time?>
                 </td>
                 <th style="width: 30%;background:#f5f5f5;">			
                     うち不交付となった回数<br>
                     Of these applications, the number of times of non-issuance																	                                                                                                                                                                 
                 </th>
                 <td colspan="1">
-                   
+                  <?php echo $result->eligibility_non_issuance?>
                 </td>
             </tr>
         </table>																
@@ -187,7 +187,7 @@ $html = '
                     回数 <br> No. of times
                 </th>
                 <td colspan="1">
-               
+                <?php echo $result->entry_time?>
                 </td>
                 <th style="width: 20%;background:#f5f5f5;">			
                     直近の出入国歴 <br>The latest entry																                                                                                                                                                                 
@@ -355,7 +355,7 @@ $html = '
                                 foreach($result5 as $row5){
                                 ?> 
                                     <tr>
-                                        <td style="font-size: 11px; text-align: center;"></td>
+                                        <td style="font-size: 11px; text-align: center;"><?php echo $row5->emp_name?></td>
                                         <td style="font-size: 12px; text-align: right;border-right: none;"><?php echo $row5->start_date?></td>
                                         <td style="font-size: 11px; text-align: left;border-left: none;">~<?php echo $row5->end_date?> </td>
                                         <td style="font-size: 11px; text-align: center;"><?php echo $row5->job_description?></td>
@@ -466,7 +466,7 @@ $html = '
                                     <tr>
                                         <!-- <td style="font-size: 11px; text-align: right;width:50px;"></td> -->
                                         <td style="font-size: 12px; text-align: center;"><?php echo $row3->achiv_name?></td>
-                                        <td style="font-size: 11px; text-align: center;"><?php echo $row3->exam_year?></td>
+                                        <td style="font-size: 11px; text-align: center;"><?php if($row3->exam_year == ''){echo '-';}else{echo $row3->exam_year;}?></td>
                                         <td style="font-size: 11px; text-align: center;"><?php echo $row3->level?></td>
                                         <td style="font-size: 11px; text-align: center;"><?php echo $row3->score?></td>
                                         <td style="font-size: 11px; text-align: center;"><?php echo $row3->result?></td>
@@ -616,7 +616,7 @@ $html = '
 			<th colspan="1" style="width: 10%;background:#f5f5f5;">
 				作成日 <br>Date	
 			</th>	
-            <td colspan="4"><?php echo $splitted = date('Y', strtotime($result->created_at));?>-<?php echo $splitted = date('m', strtotime($result->created_at));?>-<?php echo $splitted = date('d', strtotime($result->created_at));?></td>		
+            <td colspan="4"><?php echo $splitted = date('Y', strtotime($result->register_date));?>-<?php echo $splitted = date('m', strtotime($result->register_date));?>-<?php echo $splitted = date('d', strtotime($result->register_date));?></td>		
             <th colspan="1" style="width: 15%;background:#f5f5f5;">
 				署名 <br> Signature
 			</th>	

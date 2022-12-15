@@ -16,6 +16,7 @@ class Pdf_Model extends CI_Model
   private $db10 = "JLS_family_in_japan";
   private $db11 = "JLS_previous_stay_in_japan";
   private $db12 = "JLS_other_info";
+  private $db20 = "JLS_ever_been_japan";
 
   public function getAllData($id)
   {
@@ -137,5 +138,14 @@ class Pdf_Model extends CI_Model
 		$this->db->where($this->db1.'.id', $id);
     $this->db->join($this->db12, $this->db1.'.id = '.$this->db12.'.applicant_id', 'left' );
    return $this->db->get($this->db1)->row();
+  }
+  public function getJLSDetail10($id)
+  {
+    $this->db->select('*,JLS_applicant_info.id');
+		$this->db->where($this->db1.'.id', $id);
+    $this->db->join($this->db20, $this->db1.'.id = '.$this->db20.'.applicant_id', 'left' );
+    $query = $this->db->get($this->db1);
+    return $query->result();
+    // return $this->db->get($this->db1)->row();
   }
 }

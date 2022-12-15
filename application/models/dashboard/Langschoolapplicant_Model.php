@@ -16,6 +16,7 @@ class Langschoolapplicant_Model extends CI_Model
   private $db10 = "JLS_family_in_japan";
   private $db11 = "JLS_previous_stay_in_japan";
   private $db12 = "JLS_other_info";
+  private $db20 = "JLS_ever_been_japan";
 
   public function JLSapplicantinfo($userData)
   {
@@ -33,6 +34,11 @@ class Langschoolapplicant_Model extends CI_Model
     $this->db->insert($this->db12,$other_info);
     return true;
   }
+  public function JLSEverBeenJapan($data_jp_ever_been_japan)
+  {
+    $this->db->insert($this->db20,$data_jp_ever_been_japan);
+    return true;
+  }
   public function JLSfinancialsponser($data_financial_sponsor)
   {
     $this->db->insert($this->db3,$data_financial_sponsor);
@@ -43,9 +49,74 @@ class Langschoolapplicant_Model extends CI_Model
     // $this->db->insert($this->db4,$data_jp_lang_study);
     // return true;
   }
+  public function getRegisterTotal()
+  {
+    $this->db->select('*, COUNT(id) AS totalRegister');
+    $this->db->from($this->db1);
+    $this->db->where('appli_status', 'Register');
+    $query=$this->db->get();
+    return $query->result();
+  }
+  public function getInterTotal()
+  {
+    $this->db->select('*, COUNT(id) AS totalInter');
+    $this->db->from($this->db1);
+    $this->db->where('appli_status', 'Interview');
+    $query=$this->db->get();
+    return $query->result();
+  }
+  public function getInterFailTotal()
+  {
+    $this->db->select('*, COUNT(id) AS totalInterFail');
+    $this->db->from($this->db1);
+    $this->db->where('appli_status', 'Interview Failed');
+    $query=$this->db->get();
+    return $query->result();
+  }
+  public function getAdmissionTotal()
+  {
+    $this->db->select('*, COUNT(id) AS totalAdmission');
+    $this->db->from($this->db1);
+    $this->db->where('appli_status', 'Admission');
+    $query=$this->db->get();
+    return $query->result();
+  }
+  public function getAdmissionCompleteTotal()
+  {
+    $this->db->select('*, COUNT(id) AS totalAdmissCompete');
+    $this->db->from($this->db1);
+    $this->db->where('appli_status', 'Admission Complete');
+    $query=$this->db->get();
+    return $query->result();
+  }
+  public function getCOEWaitTotal()
+  {
+    $this->db->select('*, COUNT(id) AS totalCOEWait');
+    $this->db->from($this->db1);
+    $this->db->where('appli_status', 'COE Waiting');
+    $query=$this->db->get();
+    return $query->result();
+  }
+  public function getCOEResultTotal()
+  {
+    $this->db->select('*, COUNT(id) AS totalCOEResult');
+    $this->db->from($this->db1);
+    $where = "appli_status='COE Passed' OR appli_status='COE Failed'";
+    $this->db->where($where);
+    $query=$this->db->get();
+    return $query->result();
+  }
+  public function getCancelTotal()
+  {
+    $this->db->select('*, COUNT(id) AS totalCancel');
+    $this->db->from($this->db1);
+    $this->db->where('appli_status', 'Cancel');
+    $query=$this->db->get();
+    return $query->result();
+  }
   public function getJLSList()
   {
-    $this->db->select('id,applicant_name,applicant_name_kanji,jls_name,info_phone,address,std_email,created_at,updated_at');
+    $this->db->select('*');
     $this->db->from($this->db1);
     $query=$this->db->get();
     return $query->result();
@@ -135,6 +206,14 @@ class Langschoolapplicant_Model extends CI_Model
 		$this->db->where($this->db1.'.id', $id);
     $this->db->join($this->db12, $this->db1.'.id = '.$this->db12.'.applicant_id', 'left' );
     return $this->db->get($this->db1)->row();
+  }
+  public function getJLSDetail10($id)
+  {
+    $this->db->select('*,JLS_applicant_info.id');
+		$this->db->where($this->db1.'.id', $id);
+    $this->db->join($this->db20, $this->db1.'.id = '.$this->db20.'.applicant_id', 'left' );
+    $query = $this->db->get($this->db1);
+    return $query->result();
   }
   public function studentDetail($id)
 	{
@@ -389,6 +468,19 @@ class Langschoolapplicant_Model extends CI_Model
 		// $query=$this->db->get();
 		// return $query->result();
   }
+  public function JLSCheck20($data_jp_ever_been_japan, $id)
+	{
+		$this->db->select('*');
+		$this->db->from($this->db20);
+		$this->db->where('shortVisa_purpose', $data_jp_ever_been_japan['shortVisa_purpose']);
+    $this->db->where('shortVisa_status', $data_jp_ever_been_japan['shortVisa_status']);
+		$this->db->where('shortVisa_period', $data_jp_ever_been_japan['shortVisa_period']);
+    $this->db->where('shortVisa_prepare', $data_jp_ever_been_japan['shortVisa_prepare']);
+    $this->db->where('id !=', $id);
+    return true;
+		// $query=$this->db->get();
+		// return $query->result();
+  }
   public function jlsAuthUpdate($data_info, $id)
   {
     $this->db->where('id', $id);
@@ -466,6 +558,12 @@ class Langschoolapplicant_Model extends CI_Model
   {
     $this->db->where('applicant_id', $id);
 		$this->db->update($this->db12, $data_info);
+		return true;
+  }
+  public function jlsAuthUpdate12($data_jp_ever_been_japan, $id)
+  {
+    $this->db->where('applicant_id', $id);
+		$this->db->update($this->db20, $data_jp_ever_been_japan);
 		return true;
   }
   public function getStudentBatchDetail($b_id,$std_id, $course)
@@ -597,6 +695,12 @@ class Langschoolapplicant_Model extends CI_Model
 		$this->db->where("id", $id);
 		return $this->db->get($this->db11)->row();
   }
+  public function getStudentEverBeen($id)
+  {
+    $this->db->select('permission,status');
+		$this->db->where("id", $id);
+		return $this->db->get($this->db20)->row();
+  }
 
 /** Purchase history */
   public function getStudentPurchaseCount($id)
@@ -664,6 +768,7 @@ class Langschoolapplicant_Model extends CI_Model
 		$this->db->delete($this->db4);
 		return true;
   }
+  
   public function jpHistoryDeleteByAppID($id) {
     $this->db->where('applicant_id', $id);
 		$this->db->delete($this->db5);
@@ -697,6 +802,11 @@ class Langschoolapplicant_Model extends CI_Model
   public function preJaFamHistoryDeleteByAppID($id) {
     $this->db->where('applicant_id', $id);
 		$this->db->delete($this->db11);
+		return true;
+  }
+  public function jpeverbeenDeleteByAppID($id) {
+    $this->db->where('applicant_id', $id);
+		$this->db->delete($this->db20);
 		return true;
   }
   public function Delete($id)
@@ -763,6 +873,12 @@ class Langschoolapplicant_Model extends CI_Model
 	{
 		$this->db->where('id', $id);
 		$this->db->delete($this->db11);
+		return true;
+	}
+  public function jpeverDelete($id)
+	{
+		$this->db->where('id', $id);
+		$this->db->delete($this->db20);
 		return true;
 	}
 }

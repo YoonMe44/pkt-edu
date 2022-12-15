@@ -385,8 +385,8 @@ input {
   <tr style="border: none !important;">
     <th style="width: 28%;background-color:none !important;border: none !important;">7.配偶者の有無 <span  style="font-size: 12px;"> < Marital Status > </span></th>
     <td style="width: 35%;border: none !important;">
-    <input type="checkbox" <?php if($result->martial_status == '1'){ echo "checked='checked'"; } ?>><label for="" style="font-size: 14px;">あり < Married ></label>
-    <input type="checkbox" <?php if($result->martial_status == '0'){ echo "checked='checked'"; } ?>><label for="" style="font-size: 14px;">なし < Single ></label>
+    <input type="checkbox" <?php if($result->martial_status == '0'){ echo "checked='checked'"; } ?>><label for="" style="font-size: 14px;">あり < Married ></label>
+    <input type="checkbox" <?php if($result->martial_status == '1'){ echo "checked='checked'"; } ?>><label for="" style="font-size: 14px;">なし < Single ></label>
     </td>
     <th style="width: 28%;background-color:none !important;border: none !important;"> <span style="font-size: 12px;">配偶者名 < Name of your spouse > </span></th>
     <td  style="width: 8%;border: none !important;"><?php if($result->partaner_name == ''){echo '-';}else{echo "$result->partaner_name";}?></td>
@@ -454,8 +454,8 @@ input {
         <td rowspan="2" style="width: 15%;text-align:center;"><?php echo $row2->hour?><br/>hours</td>
         <td rowspan="2" style="width: 15%;text-align:center;"><?php echo $row2->hour?><br/>hours</td>
         <td rowspan="2" style="width: 15%;">
-        <input type="checkbox" <?php if($row2->jp_status == '1'){ echo "checked='checked'"; } ?>><label for="" style="font-size: 14px;">Completed</label>
-        <input type="checkbox" <?php if($row2->jp_status == '0'){ echo "checked='checked'"; } ?>><label for="" style="font-size: 14px;">Still Studying</label><br>
+        <input type="checkbox" <?php if($row2->jp_status == '1'){ echo "checked='checked'"; }else{echo"-";} ?>><label for="" style="font-size: 14px;">Completed</label>
+        <input type="checkbox" <?php if($row2->jp_status == '0'){ echo "checked='checked'"; }else{echo"-";} ?>><label for="" style="font-size: 14px;">Still Studying</label><br>
       </td>
     </tr>
     <tr>
@@ -576,6 +576,7 @@ input {
     </table>
     <p style="padding-left: 9px;padding-top: 5px;">●４回以上来日した場合、下欄に記入してください。
     <span style="font-size: 9px;"> If you have stayed in Japan more than four times, please use the blank below.</span>
+    <?php echo $result->japan_four_times?>
     <hr><hr><hr>
   </p>
     
@@ -623,9 +624,9 @@ input {
 </p>
 <div>
   <p style="width:25%;float: left;padding-left:40%;">日付 Date:</p>
-     <p style="width:5%;float: right;"><?php echo $splitted = date('d', strtotime($result->created_at));?>日　<br>day</p>
-     <p style="width:15%;float: right;"><?php echo $splitted = date('m', strtotime($result->created_at));?>月 <br>month</p>
-     <p style="width:15%;float: right;"><?php echo $splitted = date('Y', strtotime($result->created_at));?>年 <br>year</p>
+     <p style="width:5%;float: right;"><?php echo $splitted = date('d', strtotime($result->register_date));?>日　<br>day</p>
+     <p style="width:15%;float: right;"><?php echo $splitted = date('m', strtotime($result->register_date));?>月 <br>month</p>
+     <p style="width:15%;float: right;"><?php echo $splitted = date('Y', strtotime($result->register_date));?>年 <br>year</p>
      
 </div>
 <div style="width: 60%;float:right">
@@ -792,7 +793,7 @@ Further, when the above person applies for an extension of period of stay, I wil
  <table style="width: 100%;">
   <tr style="border-top: none !important;border-left: none !important;border-right: none !important;">
     <th style="width: 20%;background-color:none !important;border-right: none !important;font-size:14px;">Address:</th>
-    <td style="width: 80%;border-left: none !important;font-size:14px;"></td>
+    <td style="width: 80%;border-left: none !important;font-size:14px;"><?php echo $result9->defraying_address ?></td>
   </tr>
  </table>
  <div style="width: 100%;">
@@ -818,16 +819,16 @@ Further, when the above person applies for an extension of period of stay, I wil
   <tr style="border-top: none !important;border-left: none !important;border-right: none !important;">
     <th style="width: 20%;background-color:none !important;border-right: none !important;font-size:14px;">Relationship to the applicant:</th>
     <td style="width: 15%;border-left: none !important;border-right: none !important;font-size:14px;">
-      <input type="checkbox" style="font-size: 16px;" <?php if($result9->defraying_relation == 'Father'){ echo "checked='checked'"; } ?>><span style="font-size:14px;">Father</span>
+      <input type="checkbox" style="font-size: 16px;" <?php if($result9->defraying_relation == 'father'){ echo "checked='checked'"; } ?>><span style="font-size:14px;">Father</span>
     </td>
     <td style="width: 15%;border-left: none !important;border-right: none !important;font-size:14px;">
-     <input type="checkbox" style="font-size: 16px;" <?php if($result9->defraying_relation == 'Mother'){ echo "checked='checked'"; } ?>><span style="font-size:14px;">Mother</span>
+     <input type="checkbox" style="font-size: 16px;" <?php if($result9->defraying_relation == 'mother'){ echo "checked='checked'"; } ?>><span style="font-size:14px;">Mother</span>
     </td>
     <td style="width: 15%;border-left: none !important;border-right: none !important;font-size:14px;">
-     <input type="checkbox" style="font-size: 16px;" <?php if($result9->defraying_relation == 'Brother/Sister'){ echo "checked='checked'"; } ?>><span style="font-size:14px;">Brother/Sister</span>
+     <input type="checkbox" style="font-size: 16px;" <?php if($result9->defraying_relation == 'brother'){ echo "checked='checked'"; } ?>><span style="font-size:14px;">Brother/Sister</span>
     </td>
     <td style="width: 15%;border-left: none !important;font-size:14px;">
-      <input type="checkbox" style="font-size: 16px;" <?php if($result9->defraying_relation == 'Others'){ echo "checked='checked'"; } ?>><span style="font-size:14px;">Other()</span>
+      <input type="checkbox" style="font-size: 16px;" <?php if($result9->defraying_relation == 'other'){ echo "checked='checked'"; } ?>><span style="font-size:14px;">Other()</span>
     </td>
   </tr>
  </table>
@@ -1087,7 +1088,7 @@ Further, when the above person applies for an extension of period of stay, I wil
 <p style="width:60%;font-size:13px;float:left;">日本でやってみたいこと < What do you want to do in Japan? > </p>
 <div style="width: 100%;">
 <section class="personal-info">
-    <p class="note" style="width: 100%;padding: 30px 0px;border: 1px solid #000000;"><?php echo $result->purpose_studying_in_japanese?></p>
+    <p class="note" style="width: 100%;padding: 30px 0px;border: 1px solid #000000;"><?php echo $result9->what_todo_japan?></p>
 </section>
 </div>
 </div>
@@ -1153,13 +1154,16 @@ and telephone number etc.　Please show us the copy of Residence card for confir
 <p style="width: 100%;font-size: 14px;">Ⅳ.　日本人の友人、知り合いがいれば書いてください。(氏名、住所、電話、関係など) </p> 
 <p>you/your family have Japanese friends or acquaintances, please write his/her name, address, <br>  phone number, relationship, etc.</p>
 <section class="personal-info">
-    <p class="note" style="width: 100%;padding: 140px 0px;border: 1px solid #000000;"><?php echo $resultfamjapan->ja_fam_name?></p>
+    <p class="note" style="width: 100%;padding: 140px 0px;border: 1px solid #000000;"><?php echo $result9->family_inJpfri?></p>
 </section>
 <br><br>
 <p style="width: 100%;font-size: 14px;">Ⅴ.　あなたと家族の写真をこの下に貼って下さい。<span style="font-size: 12px;"> Please attach the picture of you and your family below this.</span> </p>
 <br>
 <section class="personal-info">
-    <p class="note" style="width: 90%;padding: 160px 0px;border: 1px solid #000000;text-align:center;">写真 <br> Picture</p>
+    <p class="note" style="width: 90%;padding: 160px 0px;border: 1px solid #000000;text-align:center;">
+    <?php if(!empty($result->family_file)) { ?>
+      <img src="<?php echo base_url('upload/assets/adm/usr/'.$result->family_file); ?>" style="width:20%;height:auto;" class="pb-1">
+    <?php } ?></p>
 </section>
 <br><br><br><br><br>
 <h2 style="text-align: center;font-family: sjis;">家族同意書 </h2>
@@ -1231,9 +1235,9 @@ Applicant name
 <div style="width:40% ;float:right">
 <table style="width: 100%;text-align:right">
     <tr style="border-top: none !important;border-right:none!important;border-left:none!important;float:right">
-      <td style="width:23%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;text-align:right;"><?php echo $splitted = date('Y', strtotime($result->created_at));?>年</td>
-      <td style="width:23%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;text-align:right;"><?php echo $splitted = date('m', strtotime($result->created_at));?>月</td>
-      <td style="width:23%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;text-align:right;"><?php echo $splitted = date('d', strtotime($result->created_at));?>日</td>
+      <td style="width:23%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;text-align:right;"><?php echo $splitted = date('Y', strtotime($result->register_date));?>年</td>
+      <td style="width:23%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;text-align:right;"><?php echo $splitted = date('m', strtotime($result->register_date));?>月</td>
+      <td style="width:23%;font-size:14px;border-top:none !important;border-right:none!important;border-left:none!important;text-align:right;"><?php echo $splitted = date('d', strtotime($result->register_date));?>日</td>
     </tr>
 </table>
 <table style="width: 100%;text-align:right">

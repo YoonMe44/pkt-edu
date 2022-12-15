@@ -472,11 +472,11 @@ History of Employment (Write in order, ending with the most recent employment.)<
 <section class="personal-info" style="width:100%;"> 
     <table style="border:none !important;padding-top:10%;margin:0px;width:50%;border-top:none !important;text-align:left;" class="tbl">
         <tr style="border:none !important;width: 60%;">
-            <td style="border:none !important; text-align: center;"><?php echo $splitted = date('Y', strtotime($result->created_at));?></td>
+            <td style="border:none !important; text-align: center;"><?php echo $splitted = date('Y', strtotime($result->register_date));?></td>
             <th style="border:none !important;">年 Year</th>
-            <td style="border:none !important;text-align: center;"><?php echo $splitted = date('m', strtotime($result->created_at));?></td>
+            <td style="border:none !important;text-align: center;"><?php echo $splitted = date('m', strtotime($result->register_date));?></td>
             <th style="border:none !important;">月 Month</th>
-            <td style="border:none !important;text-align: center;"><?php echo $splitted = date('d', strtotime($result->created_at));?></td>
+            <td style="border:none !important;text-align: center;"><?php echo $splitted = date('d', strtotime($result->register_date));?></td>
             <th style="border:none !important;">日 Date</th> 
         </tr>
     </table>

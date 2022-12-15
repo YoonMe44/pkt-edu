@@ -318,19 +318,23 @@ $html = '
                                 </tr>
                                 <tr class="text-center" style="font-size: 12px;text-align:center;">
                                     <th scope="col" style="width:20% !important;text-align:center;">入国目的 <br>Purpose</th>
-                                    <th scope="col" class="align-middle" style="width: 25%;text-align:center;">在留資格 <br>Status</th>
-                                    <th scope="col" style="width: 45%;border-left: none;text-align:center;">在留期間 <br> Period of Stay</th>
-                                    <th scope="col" style="width: 10%;text-align:center;">備  考</th>
+                                    <th scope="col" class="align-middle" style="width: 20%;text-align:center;">在留資格 <br>Status</th>
+                                    <th scope="col" style="width: 40%;border-left: none;text-align:center;">在留期間 <br> Period of Stay</th>
+                                    <th scope="col" style="width: 20%;text-align:center;">備  考</th>
                                 </tr>
+                                <?php
+                                foreach($result10 as $row10){
+                                ?> 
                                 <tr>
-                                        <td style="font-size: 11px; text-align: right;"></td>
-                                        <td style="font-size: 12px; text-align: left;"></td>
+                                        <td style="font-size: 11px; text-align: left;"><?php echo $row10->shortVisa_purpose?></td>
+                                        <td style="font-size: 12px; text-align: left;"><?php echo $row10->shortVisa_status?></td>
                                         <td style="font-size: 11px; text-align: left;border-left: none;">
-                                        自from <span><?php echo $splitted = date('Y', strtotime($row5->start_date));?></span> 年 <span><?php echo $splitted = date('m', strtotime($row5->start_date));?></span> 月 <br>
-                                        至to   <span><?php echo $splitted = date('Y', strtotime($row5->end_date));?></span> 年 <span><?php echo $splitted = date('m', strtotime($row5->end_date));?></span> 月 
+                                        自from <span><?php echo $splitted = date('Y', strtotime($row10->shortVisa_period));?></span> 年 <span><?php echo $splitted = date('m', strtotime($row10->shortVisa_period));?></span> 月 <br>
+                                        至to   <span><?php echo $splitted = date('Y', strtotime($row10->shortVisa_period));?></span> 年 <span><?php echo $splitted = date('m', strtotime($row10->shortVisa_period));?></span> 月 
                                     </td>
-                                        <td style="font-size: 11px; text-align: left;"></td>
-                                </tr>                               
+                                        <td style="font-size: 11px; text-align: left;"><?php echo $row10->shortVisa_prepare?></td>
+                                </tr>   
+                                <?php } ?>                            
                         </table>                     
 </section>
 <section class="edu-background">	
@@ -416,7 +420,7 @@ $html = '
                                     <td style="font-size: 11px; text-align: center;border-left: none;height:39px;"><?php echo $row7->ja_fam_date_birth?></td>
                                     <td style="font-size: 11px; text-align: center;height:39px;"><?php echo $row7->ja_fam_nationality?></td>
                                     <td style="font-size: 11px; text-align: center;height:39px;"><?php echo $row7->ja_fam_name?></td>
-                                    <td style="font-size: 11px; text-align: center;height:39px;"></td>
+                                    <td style="font-size: 11px; text-align: center;height:39px;"><?php echo $row7->ja_certificate_alien?></td>
                                 </tr>
                                 <?php } ?>
                         </table>                     
@@ -536,7 +540,7 @@ $html = '
                             <td colspan="2" style="border:none;padding-left:85px;">				
                             申請日Date of Application
                             </td>
-                            <td colspan="3" style="border:none;padding-left:50px;"><?php echo $splitted = date('Y', strtotime($result->created_at));?>年　　<?php echo $splitted = date('m', strtotime($result->created_at));?>月　　<?php echo $splitted = date('d', strtotime($result->created_at));?>日
+                            <td colspan="3" style="border:none;padding-left:50px;"><?php echo $splitted = date('Y', strtotime($result->register_date));?>年　　<?php echo $splitted = date('m', strtotime($result->register_date));?>月　　<?php echo $splitted = date('d', strtotime($result->register_date));?>日
                                 <br> 　　year　　month　　day
                             </td>
                         </tr>

@@ -88,6 +88,12 @@ p{
                 );
                 echo form_input($data);
                 $data = array(
+                  'name'  => 'family_file',
+                  'type' => 'hidden',
+                  'value' => $lists['family_file'],
+                );
+                echo form_input($data);
+                $data = array(
                   'name'  => 'applicant_name',
                   'type' => 'hidden',
                   'value' => $lists['applicant_name'],
@@ -147,7 +153,7 @@ p{
 <!-- Student Sign -->
 <div class="col-md-6" style="display: flex;padding-top: 12px;">
 <?php
-    echo form_label('Applicant Sign','userfile', array('class' => 'col-form-label')) ;
+    echo form_label('Applicant Sign','signfile', array('class' => 'col-form-label')) ;
 ?>
 <div class="std_img">
 <?php echo $lists['sign_file']; ?>
@@ -161,6 +167,13 @@ p{
     <p name="jls_name" id="jls_name" class="list_label"><?php echo $lists['jls_name']; ?></p>
 </div>
 <!-- JLS Name -->
+
+<!-- Status  -->
+<div class="col-md-6 school_list" name="" >
+    <label class="list_label">Status </label>
+    <p name="appli_status" id="appli_status" class="list_label"><?php echo $lists['appli_status']; ?></p>
+</div>
+<!-- Status -->
 
 </div>
 </div>
@@ -213,7 +226,17 @@ p{
        <?php echo form_label('Gender', 'gender', array( 'class' => 'form-control-label', 'id'=> '')); ?>
        <p class="comfirm_val" id="gender" name="gender"><?php echo $lists['gender']; ?></p>
     </div> 
-
+<script>
+$(function() {  
+       if(($('#martial_status').text()) =="Single"){
+         $('#partaner').hide();
+        }else if(($('#martial_status').text())=="Married"){
+        $('#partaner').show();
+      }else{
+        $('#partaner').hide();
+      }
+    });
+</script>
     <div class="form-group">
       <?php echo form_label('Martial Status', 'martial_status', array( 'class' => 'form-control-label', 'id'=> '')); ?>
       <p class="comfirm_val" id="martial_status" name="martial_status"><?php echo $lists['martial_status']; ?></p>
@@ -254,12 +277,18 @@ p{
         <?php echo form_label('Have you visited Japan?', 'have_you_visited_jp', array( 'class' => 'form-control-label', 'id'=> '')); ?>
         <p class="comfirm_val" id="have_you_visited_jp" name="have_you_visited_jp"><?php echo $data_details['have_you_visited_jp']; ?></p>
   </div>
-
+  <div class="form-group">
+        <?php echo form_label('Have you visited Japan?', 'visited_jp_status', array( 'class' => 'form-control-label', 'id'=> '')); ?>
+        <p class="comfirm_val" id="visited_jp_status" name="visited_jp_status"><?php echo $data_details['visited_jp_status']; ?></p>
+  </div>
   <div class="form-group">
         <?php echo form_label('Date of Entry', 'visited_date', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'phone')); ?>
         <p class="comfirm_val" id="visited_date" name="visited_date"><?php echo $data_details['visited_date']; ?></p>
   </div>
- 
+  <div class="form-group">
+        <?php echo form_label('Times of Entry', 'entry_time', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'phone')); ?>
+        <p class="comfirm_val" id="entry_time" name="entry_time"><?php echo $data_details['entry_time']; ?></p>
+  </div>
   <div class="form-group">
         <?php echo form_label('Date of Departure', 'date_of_departure', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'phone')); ?>
         <p class="comfirm_val" id="date_of_departure" name="date_of_departure"><?php echo $data_details['date_of_departure']; ?></p>
@@ -304,34 +333,35 @@ p{
         <?php echo form_label('Grade', 'current_status_school_grade', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'phone')); ?>
         <p class="comfirm_val" id="current_status_school_grade" name="current_status_school_grade"><?php echo $data_details['current_status_school_grade']; ?></p>
   </div>
-
+  <div class="form-group">
+        <?php echo form_label('What do you want to do in Japan? ‌', 'what_todo_japan', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'what_todo_japan')); ?>
+        <p class="comfirm_val" id="what_todo_japan" name="what_todo_japan"><?php echo $other_info['what_todo_japan']; ?></p>
+  </div>
   <div class="form-group">
         <?php echo form_label('Others (If your are a student of Japanese language course, or neither a student nor a worker, explain your current situation in detail. ‌', 'student_work_details', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'student_work_details')); ?>
         <p class="comfirm_val" id="student_work_details" name="student_work_details"><?php echo $other_info['student_work_details']; ?></p>
   </div>
-<br>
-  <div class="form-group">
-        <?php echo form_label('Have you ever been japan (Including 3 moth short visa) ‌', 'three_month_visa', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'phone')); ?>
-        <p class="comfirm_val" id="three_month_visa" name="three_month_visa"><?php echo $other_info['three_month_visa']; ?></p>
-  </div>
+
+  
 
   <div class="form-group">
   <?php echo form_label('What language can you use?', 'language_can_you_use', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'COE_reject')); ?>
   <p class="comfirm_val" id="language_can_you_use" name="language_can_you_use"><?php echo $other_info['language_can_you_use']; ?></p>   
   </div>
 
+  
+  <div class="form-group" id="specific_plans">
   <h6 class="spec_plan">Specific Plans after Graduating</h6>
-  <div class="form-group">
         <?php echo form_label('Specific Plans after Graduating', 'specific_plans_after_graduating', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'phone')); ?>
         <p class="comfirm_val" id="specific_plans_after_graduating" name="specific_plans_after_graduating"><?php echo $data_details['specific_plans_after_graduating']; ?></p>
   </div>
-
+  <br>
   <h6 class="spec_plan">Higher Education in Japan</h6>
   <div class="form-group">
+
         <?php echo form_label('Type of Schools', 'specific_plan_type_schools', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'phone')); ?>
         <p class="comfirm_val" id="specific_plan_type_schools" name="specific_plan_type_schools"><?php echo $data_details['specific_plan_type_schools']; ?></p>
   </div>
-
   <div class="form-group">
         <?php echo form_label('Name of School', 'specific_plan_school_name', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'phone')); ?>
         <p class="comfirm_val" id="specific_plan_school_name" name="specific_plan_school_name"><?php echo $data_details['specific_plan_school_name']; ?></p>
@@ -509,7 +539,7 @@ p{
   <p class="comfirm_val" id="you_are_good_subject" name="you_are_good_subject"><?php echo $other_info['you_are_good_subject']; ?></p>   
   </div>
   
-  <h6 class="spec_plan">Employment</h6>
+  <h6 class="spec_plan" style="padding-top: 132px;">Employment</h6>
   <div class="form-group">
         <?php echo form_label('Aimed occupational category', 'aimed_occupational_category', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'aimed_occupational_category')); ?>
         <p class="comfirm_val" id="aimed_occupational_category" name="aimed_occupational_category"><?php echo $data_details['aimed_occupational_category']; ?></p>   
@@ -519,7 +549,10 @@ p{
         <?php echo form_label('When will you return', 'will_you_return', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'will_you_return')); ?>
         <p class="comfirm_val" id="will_you_return" name="will_you_return"><?php echo $data_details['will_you_return']; ?></p>   
   </div>
-
+  <div class="form-group">
+        <?php echo form_label('Return Other', 'return_other', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'return_other')); ?>
+        <p class="comfirm_val" id="return_other" name="return_other"><?php echo $data_details['return_other']; ?></p>   
+  </div>
   <div class="form-group">
   <?php echo form_label('Is it possible to provide in English? ', 'provide_english', array( 'class' => 'form-control-label', 'id'=> '')); ?>
   <p class="comfirm_val" id="provide_english" name="provide_english"><?php echo $data_details['provide_english']; ?></p>   
@@ -576,7 +609,7 @@ p{
 </div>
 <br><br><br>
 <div class="form-group">
-        <?php echo form_label('ビザの種類 type of visa', 'eligibility_visa', array( 'class' => 'form-control-label', 'id'=> 'eligibility_visa')); ?>
+        <?php echo form_label('ビザの種類 type of visa', 'eligibility_visa', array( 'class' => '', 'id'=> 'eligibility_visa')); ?>
         <p class="comfirm_val" id="eligibility_visa" name="eligibility_visa"><?php echo $other_info['eligibility_visa']; ?></p>   
 </div>
 </div>
@@ -606,12 +639,18 @@ p{
             <p class="comfirm_val" id="entry_purpose" name="entry_purpose1"><?php echo $data_details['entry_purpose1']; ?></p>
             </label> 
         </div>
-    </div>  
-</div>
+    </div> 
+    <div class="form-group">
+    <?php echo form_label('Of these applications, the number of times of non-issuance', ' eligibility_non_issuance', array( 'class' => 'eli_text', 'id'=> 'eligibility_non_issuance', 'style' => '', 'for' => 'phone')); ?>
+    <p class="comfirm_val" id="eligibility_non_issuance" name="eligibility_non_issuance"><?php echo $data_details['eligibility_non_issuance']; ?></p>   
+</div> 
 <div class="form-group">
-    <?php echo form_label('Issued / Denied Date', ' issued_date', array( 'class' => 'eli_text', 'id'=> 'issued_date', 'style' => '', 'for' => 'issued_date')); ?>
+    <?php echo form_label('Issued / Denied Date', ' issued_date', array( 'class' => '', 'id'=> 'issued_date', 'style' => '', 'for' => 'issued_date')); ?>
     <p class="comfirm_val" id="issued_date" name="criminal_record_details"><?php echo $other_info['issued_date']; ?></p>   
 </div>
+
+</div>
+
   <style>
   .criminal_record01 {
     width: 34%;
@@ -623,7 +662,7 @@ p{
   }
   .form-group {
     margin-bottom: 1rem;
-    border: 1px solid;
+    /* border: 1px solid; */
     height: 50px;
 }
 </style> 
@@ -631,15 +670,15 @@ p{
 </div>
 <!-- co_leftside -->
 
-<div class="criminal form-group float-left">
+<div class="criminal float-left" style="padding-left: 14px;">
+<div>
   <label>Purpose of studying in Japanese </label>
-  <div class="col-md-12 col-sm-12 p-0">
   <p class="comfirm_val" id="purpose_studying_in_japanese" name="purpose_studying_in_japanese">
   <?php echo $data_details['purpose_studying_in_japanese']; ?>
-  </p>
-  </div>   
+  </p>  
 </div>
-
+</div>
+<div>
 <div class="col-md-6 float-left">
 <h6 class="" style="padding: 33px 0px 12px;">Contact details of your family</h6>
 <div class="form-group">
@@ -677,6 +716,7 @@ p{
     <p class="comfirm_val" id="type_work_mother" name="type_work_mother"><?php echo $other_info['type_work_mother']; ?></p>
 </div>
 </div>
+</div>
 <!-- co_leftside -->
 <!-- co_rightside -->
 <div class="col-md-6 float-right">
@@ -709,7 +749,7 @@ p{
 <!-- co_rightside -->
 <!-- co_rightside -->
 <div class="col-md-6 float-right">
-<h6 class="" style="padding: 33px 0px 12px;">Written Oath for Defraying Expenses</h6>
+<h6 class="" style="padding: 168px 0px 12px;">Written Oath for Defraying Expenses</h6>
 <div class="form-group">
     <?php echo form_label('Tuition for 6 months', 'six_tuition_fee', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'six_tuition_fee')); ?>
     <p class="comfirm_val" id="six_tuition_fee" name="six_tuition_fee"><?php echo $other_info['six_tuition_fee']; ?></p>
@@ -765,6 +805,11 @@ p{
 </div>
 
 <div class="form-group">
+    <?php echo form_label('Address','defraying_address', array('class' => '')); ?>
+    <p class="comfirm_val" id="defraying_address" name="defraying_address"><?php echo $other_info['defraying_address']; ?></p>
+</div>
+
+<div class="form-group">
     <?php echo form_label('Company Name','father_work_place', array('class' => '')); ?>
     <p class="comfirm_val" id="defraying_company" name="defraying_company"><?php echo $other_info['defraying_company']; ?></p>
 </div>
@@ -773,11 +818,11 @@ p{
     <?php echo form_label('Tel(workplace)','defraying_work_tel', array('class' => '')); ?>
     <p class="comfirm_val" id="defraying_work_tel" name="defraying_work_tel"><?php echo $other_info['defraying_work_tel']; ?></p>
 </div>
-
+<!-- 
 <div class="form-group">
     <?php echo form_label('Signature','defraying_sign', array('class' => '')); ?>
     <p class="comfirm_val" id="defraying_sign" name="defraying_sign"><?php echo $other_info['defraying_sign']; ?></p>
-</div>
+</div> -->
 
 <div class="form-group">
     <?php echo form_label('Date','defraying_date', array('class' => '')); ?>
@@ -888,8 +933,29 @@ $(function() {
          $('.specify').hide();
       }
     });
+    $(function() {  
+       if(($('#jls_name', this).text()) =="shizuoka"){
+         $('#specific_plans').hide();
+         $('#future_plan').show();
+        }else if(($('#jls_name', this).text()) =="ECC"){
+          $('#specific_plans').show();
+          $('#future_plan').hide();
+        }else if(($('#jls_name', this).text()) =="JCLI"){
+            $('#specific_plans').show();
+            $('#future_plan').hide();
+        }else if(($('#jls_name', this).text())=="OJLS"){
+            $('#specific_plans').show();
+            $('#future_plan').hide();
+        }else if(($('#jls_name', this).text()) =="fukuoka"){
+            $('#specific_plans').show();
+            $('#future_plan').hide();
+        }else{
+          $('#specific_plans').hide();
+          $('#future_plan').hide();
+        }
+    });
 </script>
-<div class="col-md-12 float-left" style="padding-bottom: 15px;">
+<div class="col-md-12 float-left" style="padding-bottom: 15px;" id="future_plan">
 <h6 class="" style="padding: 33px 0px 12px;">この学校を卒業した後の予定 < Future plan after graduating from this school.></h6>
 <div class="form-group">
     <p class="comfirm_val" id="future_plan_after_graduating" name="future_plan_after_graduating"><?php echo $other_info['future_plan_after_graduating']; ?></p>
@@ -1035,10 +1101,6 @@ $(function() {
 <!-- Table -->
 <div class="col-md-7 float-left">
 <h6 class="" style="padding: 33px 0px 12px;">Achievement in JP language tests</h6>
-<div class="form-group">
-  <?php echo form_label('Japanese Language Proficiency', 'jplearn_achievement', array( 'class' => 'passport_text', 'id'=> '')); ?>
-  <p class="comfirm_val" id="jplearn_achievement" name="jplearn_achievement"><?php echo $data_details['jplearn_achievement']; ?></p>
-  </div>
 <div class="tbl">
 <table class="table-bordered" name="applicant_id">
   <thead class="tbl_head">
@@ -1084,6 +1146,10 @@ $(function() {
 </table>
 <br>
 <div class="form-group">
+  <?php echo form_label('Japanese Language Proficiency', 'jplearn_achievement', array( 'class' => 'passport_text', 'id'=> '')); ?>
+  <p class="comfirm_val" id="jplearn_achievement" name="jplearn_achievement"><?php echo $data_details['jplearn_achievement']; ?></p>
+  </div>
+<div class="form-group">
   <?php echo form_label('Certificate Number', 'jp_certificate_number', array( 'class' => 'passport_text', 'id'=> '')); ?>
   <p class="comfirm_val" id="jp_certificate_number" name="jp_certificate_number"><?php echo $other_info['jp_certificate_number']; ?></p>
   </div>
@@ -1095,7 +1161,7 @@ $(function() {
 <table class="table-bordered" name="applicant_id">
   <thead class="tbl_head">
     <tr>
-      <th>Name of Japanese language <br>test</th>
+      <th>Name of Japanese language test</th>
       <th>Level</th>
       <th>Date</th>
     </tr>
@@ -1245,6 +1311,14 @@ $(function() {
   </tbody>
 </table>
 </div>
+<br><br>
+<div class="col-md-6" style="display: flex;padding-top: 12px;">
+<?php
+    echo form_label('Please attach the picture of you and your family below this','familyfile', array('class' => 'col-form-label')) ;
+?>
+<div class="std_img">
+<?php echo $lists['family_file']; ?>
+</div> 
 </div>
 <!-- Table -->
 <!-- Table -->
@@ -1252,10 +1326,7 @@ $(function() {
 <h6 class="" style="padding: 33px 0px 12px;">Family in Japan (Father, Mother, Spouse, Child, Brother and Sisters, or Others) :</h6>
 <p class="comfirm_val" id="ja_plan_to_stay_with_them" name="family_in_japan"><?php echo $data_details['family_in_japan']; ?></p>
 <p>If yes, fill in all the family members in Japan.</p>
-  <div class="form-group">
-    <?php echo form_label('Are you planning to stay with them in Japan? : ', 'ja_plan_to_stay_with_them', array( 'class' => 'form-control-label', 'id'=> '')); ?><br/>
-    <p class="comfirm_val" id="ja_plan_to_stay_with_them" name="ja_plan_to_stay_with_them"><?php echo $data_details['ja_plan_to_stay_with_them']; ?></p>
-  </div>
+<br>
 <div class="tbl">
 <table class="table-bordered" name="applicant_id">
   <thead class="tbl_head">
@@ -1321,6 +1392,16 @@ $(function() {
   </tbody>
 </table>
 </div>
+<br>
+<div class="form-group">
+    <?php echo form_label('Are you planning to stay with them in Japan? : ', 'ja_plan_to_stay_with_them', array( 'class' => 'form-control-label', 'id'=> '')); ?><br/>
+    <p class="comfirm_val" id="ja_plan_to_stay_with_them" name="ja_plan_to_stay_with_them"><?php echo $data_details['ja_plan_to_stay_with_them']; ?></p>
+  </div>
+<div class="form-group">
+    <?php echo form_label('you/your family have Japanese friends or acquaintances, please write his/her name, address,phone number, relationship, etc. ', 'family_inJpfri', array( 'class' => 'form-control-label', 'id'=> 'family_inJpfri')); ?><br/>
+    <p class="comfirm_val" id="family_inJpfri" name="family_inJpfri"><?php echo $other_info['family_inJpfri']; ?></p>
+  </div> 
+</div>
 </div>
 <!-- Table -->
 <!-- Table -->
@@ -1333,7 +1414,7 @@ $(function() {
     <th>Date of Entry	</th>
     <th>Date of Arrival	</th>
     <th>Date of Depature </th>
-    <th >Visa	 </th>
+    <th >Visa	   </th>
     <th >Status	 </th>
     <th>Purpose of Entry</th>
   </tr>
@@ -1370,9 +1451,58 @@ $(function() {
   </tbody>
 </table>
 </div>
+<br>
+<div class="form-group">
+    <?php echo form_label('If you have stayed in Japan more than four times, please use the blank below.','japan_four_times', array('class' => '')); ?>
+    <p class="comfirm_val" id="japan_four_times" name="japan_four_times"><?php echo $other_info['japan_four_times']; ?></p>
+</div>
+</div>
+<!-- Table -->
+
+<!-- Table -->
+<div class="col-md-12 float-left" style="padding-bottom: 15px;">
+<h6 class="" style="padding: 33px 0px 12px;">Have you ever been japan (Including 3 moth short visa)</h6>
+<div class="tbl">
+<table class="table-bordered" name="applicant_id">
+  <thead class="tbl_head">
+  <tr>
+      <th>Purpose	</th>
+      <th>Status	</th>
+      <th>Period of Stay </th>
+      <th >Preparation	 </th>
+    </tr>
+  </thead>
+  <tbody>
+  <?php
+        $x=1;
+        $y=0;
+        // var_dump($data_previous_stay_japan['edu_name']);
+          foreach($data_jp_ever_been_japan['shortVisa_purpose'] as $key=>$rowData){
+  ?>  
+  <tr>
+    <td>
+     <p class="tbl_comfirmVal" name="shortVisa_purpose[]" style="text-align: center;height: 18px;" ><?php echo $data_jp_ever_been_japan['shortVisa_purpose'][$key];?></p>
+    </td>
+    <td>
+     <p class="tbl_comfirmVal" name="shortVisa_status[]" style="text-align: center;height: 18px;" ><?php echo $data_jp_ever_been_japan['shortVisa_status'][$key];?></p>
+    </td>
+    <td>
+     <p class="tbl_comfirmVal" name="shortVisa_period[]" style="text-align: center;height: 18px;" ><?php echo $data_jp_ever_been_japan['shortVisa_period'][$key];?></p>
+    </td>
+    <td>
+     <p class="tbl_comfirmVal" name="shortVisa_prepare[]" style="text-align: center;height: 18px;" ><?php echo $data_jp_ever_been_japan['shortVisa_prepare'][$key];?></p>
+    </td>
+  </tr>
+  <?php } 
+  ?>
+  </tbody>
+</table>
+</div>
 
 </div>
 <!-- Table -->
+
+
 </div>
 </div>
 

@@ -95,13 +95,13 @@
 <!-- JLS Name -->
 <div class="school_list" name="" >
 <p class="list_label">JLS Name  </p>
-<select name="jls_name" class="school_select">
+<select name="jls_name" class="school_select" id="jls_name">
     <option value="" <?php if($result->jls_name== "") echo "selected"; ?>>Please Select!</option>
     <option value="ECC" <?php if($result->jls_name== "ECC") echo "selected"; ?>>ECC</option>
     <option value="JCLI" <?php if($result->jls_name== "JCLI") echo "selected"; ?>>JCLI</option>
     <option value="OJLS" <?php if($result->jls_name== "OJLS") echo "selected"; ?>>OJLS</option>
-    <option value="Fukuoka" <?php if($result->jls_name== "Fukuoka") echo "selected"; ?>>fukuoka</option>
-    <option value="Shizuoka" <?php if($result->jls_name== "Shizuoka") echo "selected"; ?>>shizuoka</option>
+    <option value="fukuoka" <?php if($result->jls_name== "Fukuoka") echo "selected"; ?>>fukuoka</option>
+    <option value="shizuoka" <?php if($result->jls_name== "Shizuoka") echo "selected"; ?>>shizuoka</option>
 </select>
 </div>
 <!-- JLS Name -->
@@ -110,22 +110,43 @@
 <div class="status_popup" >
 <div class="school_list status_select" name="" >
 <p class="list_label">Status </p>
-<select name="" id="sele_popup " class="school_select">
-<option value="" <?php if($result->status== "") echo "selected"; ?>>Please Select!</option>
-        <option value="Register" <?php if($result->status== "Register") echo "selected"; ?>>Register</option>
-        <option value="Interview" <?php if($result->status== "Interview") echo "selected"; ?>>Interview</option>
-        <option value="Interview Failed" <?php if($result->status== "Interview Failed") echo "selected"; ?>>Interview Failed</option>
-        <option value="Admission" <?php if($result->status== "Admission") echo "selected"; ?>>Admission</option>
-        <option value="Admission Complete" <?php if($result->status== "Admission Complete") echo "selected"; ?>>Admission Complete</option>
-        <option value="COE Waiting" <?php if($result->status== "COE Waiting") echo "selected"; ?>>COE Waiting</option>
-        <option value="Cancel" <?php if($result->status== "Cancel") echo "selected"; ?>>Cancel</option>
-        <option value="COE Failed" <?php if($result->status== "COE Failed") echo "selected"; ?>>COE Failed</option>
-        <option value="COE Passed" <?php if($result->status== "COE Passed") echo "selected"; ?>>COE Passed</option>
+<select name="appli_status" id="sele_popup " class="school_select">
+<option value="">Please Select!</option>
+        <option value="Register" <?php if($result->appli_status== "Register") echo "selected"; ?>>Register</option>
+        <option value="Interview" <?php if($result->appli_status== "Interview") echo "selected"; ?>>Interview</option>
+        <option value="Interview Failed" <?php if($result->appli_status== "Interview Failed") echo "selected"; ?>>Interview Failed</option>
+        <option value="Admission" <?php if($result->appli_status== "Admission") echo "selected"; ?>>Admission</option>
+        <option value="Admission Complete" <?php if($result->appli_status== "Admission Complete") echo "selected"; ?>>Admission Complete</option>
+        <option value="COE Waiting" <?php if($result->appli_status== "COE Waiting") echo "selected"; ?>>COE Waiting</option>
+        <option value="Cancel" <?php if($result->appli_status== "Cancel") echo "selected"; ?>>Cancel</option>
+        <option value="COE Passed" <?php if($result->appli_status== "COE Passed") echo "selected"; ?>>COE Passed</option>
+        <option value="COE Failed" <?php if($result->appli_status== "COE Failed") echo "selected"; ?>>COE Failed</option>
 </select>
 </div>
   <!-- Status Name -->
-  <!-- interview date -->
-  <div class="col-md-10 float-left" id="interview_date"  style="display: none;">
+  <!-- Register date -->
+  <div class="col-md-10" id="register_date"  style="display: none;">
+    <div class="form-group school_list"  style="width:60% ;padding: 0px;">
+    <p class="list_label" >
+       <label style="margin-bottom: 0px;margin-top: 12px;">Register Date</label>
+       <span class="badge badge-danger" >Required</span>
+
+    </p>
+        <?php
+          echo form_input(array(
+            'name' => 'register_date',
+            'type' => 'date',
+            'value' => html_escape(set_value('register_date',isset($result)?$result->register_date:''), ENT_QUOTES),
+            'class' => 'form-control',
+            'id' => 'register_date',
+            'autocomplete' => ''));
+          ?>
+        <span class="text-danger"><?php echo form_error('register_date'); ?></span>
+    </div>
+  </div>
+<!-- Register date -->
+<!-- interview date -->
+<div class="col-md-10" id="interview_date"  style="display: none;">
     <div class="form-group school_list"  style="width:60% ;padding: 0px;">
     <p class="list_label" >
        <label style="margin-bottom: 0px;margin-top: 12px;">Interview Date</label>
@@ -145,10 +166,29 @@
     </div>
   </div>
 <!-- interview date -->
+<!-- interview failed date -->
+<div class="col-md-10" id="inter_fail_date"  style="display: none;">
+    <div class="form-group school_list"  style="width:60% ;padding: 0px;">
+    <p class="list_label" >
+       <label style="margin-bottom: 0px;margin-top: 12px;">Interview Failed Date</label>
+       <span class="badge badge-danger" >Required</span>
 
-
+    </p>
+        <?php
+          echo form_input(array(
+            'name' => 'inter_fail_date',
+            'type' => 'date',
+            'value' => html_escape(set_value('inter_fail_date',isset($result)?$result->inter_fail_date:''), ENT_QUOTES),
+            'class' => 'form-control',
+            'id' => 'inter_fail_date',
+            'autocomplete' => ''));
+          ?>
+        <span class="text-danger"><?php echo form_error('inter_fail_date'); ?></span>
+    </div>
+  </div>
+<!-- interview failed date -->
 <!-- admission date -->
-<div class="col-md-10 float-left" id="admission_date" style="display: none;">
+<div class="col-md-10" id="admission_date" style="display: none;">
     <div class="form-group school_list"  style="width:60% ;padding: 0px;">
     <p class="list_label" >
        <label  style="margin-bottom: 0px;margin-top: 12px;">Admission Date</label>
@@ -169,7 +209,7 @@
 <!-- admission date -->
 
 <!-- collect data expired date -->
-<div class="col-md-10 float-left" id="data_expired_date" style="display: none;">
+<div class="col-md-10" id="data_expired_date" style="display: none;">
     <div class="form-group school_list"  style="width:60% ;padding: 0px;">
     <p class="list_label">
        <label  style="margin-bottom: 0px;margin-top: 12px;">Collect Data EXP Date</label>
@@ -190,7 +230,7 @@
 <!-- collect data expired date -->
 
 <!-- admission date -->
-<div class="col-md-10 float-left" id="adm_complete_date" style="display: none;">
+<div class="col-md-10" id="adm_complete_date" style="display: none;">
     <div class="form-group school_list" style="width:60% ;padding: 0px;">
     <p class="list_label">
        <label  style="margin-bottom: 0px;margin-top: 12px;">Complete Date</label>
@@ -211,7 +251,7 @@
 <!-- admission date -->
 
 <!-- tracking code -->
-<div class="col-md-10 float-left" id="tracking_code" style="display: none;">
+<div class="col-md-10" id="tracking_code" style="display: none;">
     <div class="form-group school_list"  style="width:60% ;padding: 0px;margin-top: 8px;">
     <p class="list_label">
        <label  style="margin-bottom: 0px;margin-top: 12px;">Tracking Code</label>
@@ -230,46 +270,368 @@
     </div>
 </div>
 <!-- tracking code -->
+<!-- interview date -->
+<div class="col-md-10" id="coe_date"  style="display: none;">
+    <div class="form-group school_list"  style="width:60% ;padding: 0px;">
+    <p class="list_label" >
+       <label style="margin-bottom: 0px;margin-top: 12px;">COE Date</label>
+       <span class="badge badge-danger" >Required</span>
 
+    </p>
+        <?php
+          echo form_input(array(
+            'name' => 'coe_date',
+            'type' => 'date',
+            'value' => html_escape(set_value('coe_date',isset($result)?$result->coe_date:''), ENT_QUOTES),
+            'class' => 'form-control',
+            'id' => 'coe_date',
+            'autocomplete' => ''));
+          ?>
+        <span class="text-danger"><?php echo form_error('coe_date'); ?></span>
+    </div>
+  </div>
+<!-- interview date -->
+<!-- interview date -->
+<div class="col-md-10" id="coe_pass_date"  style="display: none;">
+    <div class="form-group school_list"  style="width:60% ;padding: 0px;">
+    <p class="list_label" >
+       <label style="margin-bottom: 0px;margin-top: 12px;">COE Passed</label>
+       <span class="badge badge-danger" >Required</span>
+
+    </p>
+        <?php
+          echo form_input(array(
+            'name' => 'coe_pass_date',
+            'type' => 'date',
+            'value' => html_escape(set_value('coe_pass_date',isset($result)?$result->coe_pass_date:''), ENT_QUOTES),
+            'class' => 'form-control',
+            'id' => 'coe_pass_date',
+            'autocomplete' => ''));
+          ?>
+        <span class="text-danger"><?php echo form_error('coe_pass_date'); ?></span>
+    </div>
+  </div>
+<!-- interview date -->
+<!-- interview date -->
+<div class="col-md-10" id="coe_fail_date"  style="display: none;">
+    <div class="form-group school_list"  style="width:60% ;padding: 0px;">
+    <p class="list_label" >
+       <label style="margin-bottom: 0px;margin-top: 12px;">COE Failed</label>
+       <span class="badge badge-danger" >Required</span>
+
+    </p>
+        <?php
+          echo form_input(array(
+            'name' => 'coe_fail_date',
+            'type' => 'date',
+            'value' => html_escape(set_value('coe_fail_date',isset($result)?$result->coe_fail_date:''), ENT_QUOTES),
+            'class' => 'form-control',
+            'id' => 'coe_fail_date',
+            'autocomplete' => ''));
+          ?>
+        <span class="text-danger"><?php echo form_error('coe_fail_date'); ?></span>
+    </div>
+  </div>
+<!-- interview date -->
+<!-- coe failed times -->
+<div class="col-md-10" id="coe_fail_times"  style="display: none;">
+    <div class="form-group school_list"  style="width:60% ;padding: 0px;">
+    <p class="list_label" >
+       <label style="margin-bottom: 0px;margin-top: 12px;">COE Failed Times</label>
+       <span class="badge badge-danger" >Required</span>
+
+    </p>
+        <?php
+          echo form_input(array(
+            'name' => 'coe_fail_times',
+            'type' => 'text',
+            'value' => html_escape(set_value('coe_fail_times',isset($result)?$result->coe_fail_times:''), ENT_QUOTES),
+            'class' => 'form-control',
+            'id' => 'coe_fail_times',
+            'autocomplete' => ''));
+          ?>
+        <span class="text-danger"><?php echo form_error('coe_fail_times'); ?></span>
+    </div>
+  </div>
+<!-- coe failed times -->
+<!-- cancel dates -->
+<div class="col-md-10" id="cancel_date"  style="display: none;">
+    <div class="form-group school_list"  style="width:60% ;padding: 0px;">
+    <p class="list_label" >
+       <label style="margin-bottom: 0px;margin-top: 12px;">Cancel Date</label>
+       <span class="badge badge-danger" >Required</span>
+
+    </p>
+        <?php
+          echo form_input(array(
+            'name' => 'cancel_date',
+            'type' => 'date',
+            'value' => html_escape(set_value('coe_fail_times',isset($result)?$result->cancel_date:''), ENT_QUOTES),
+            'class' => 'form-control',
+            'id' => 'cancel_date',
+            'autocomplete' => ''));
+          ?>
+        <span class="text-danger"><?php echo form_error('cancel_date'); ?></span>
+    </div>
+  </div>
+<!-- cancel date -->
+<!-- cancel times -->
+<div class="col-md-10" id="cancel_times"  style="display: none;">
+    <div class="form-group school_list"  style="width:60% ;padding: 0px;">
+    <p class="list_label" >
+       <label style="margin-bottom: 0px;margin-top: 12px;">Cancel Times</label>
+       <span class="badge badge-danger" >Required</span>
+
+    </p>
+        <?php
+          echo form_input(array(
+            'name' => 'cancel_times',
+            'type' => 'text',
+            'value' => html_escape(set_value('cancel_times',isset($result)?$result->cancel_times:''), ENT_QUOTES),
+            'class' => 'form-control',
+            'id' => 'cancel_times',
+            'autocomplete' => ''));
+          ?>
+        <span class="text-danger"><?php echo form_error('cancel_times'); ?></span>
+    </div>
+  </div>
+<!-- cancel times -->
+<!-- interview failed times -->
+<div class="col-md-10" id="inter_fail_times"  style="display: none;">
+    <div class="form-group school_list"  style="width:60% ;padding: 0px;">
+    <p class="list_label" >
+       <label style="margin-bottom: 0px;margin-top: 12px;">Inter Fail Times</label>
+       <span class="badge badge-danger" >Required</span>
+
+    </p>
+        <?php
+          echo form_input(array(
+            'name' => 'inter_fail_times',
+            'type' => 'text',
+            'value' => html_escape(set_value('cancel_times',isset($result)?$result->inter_fail_times:''), ENT_QUOTES),
+            'class' => 'form-control',
+            'id' => 'inter_fail_times',
+            'autocomplete' => ''));
+          ?>
+        <span class="text-danger"><?php echo form_error('inter_fail_times'); ?></span>
+    </div>
+  </div>
+<!-- interview failed times -->
 </div>
 <!-- Status -->
 </div>
 <!-- </div> -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>
-$(function() {  
-    $(".status_select").change(function() {
-       if($('option:selected', this).text() =="Interview"){
-         $('#interview_date').show();
+$(function() { 
+  const jlsNameSelector = (jlschool_name) =>{
+       if(jlschool_name =="Register"){
+         $('#register_date').show();
+         $('#inter_fail_date').hide();
+         $('#interview_date').hide();
          $('#data_expired_date').hide();
          $('#admission_date').hide();
          $('#tracking_code').hide();
          $('#adm_complete_date').hide();
+         $('#coe_date').hide();
+         $('#coe_fail_date').hide();
+         $('#coe_pass_date').hide();
+         $('#coe_fail_times').hide();
+         $('#cancel_date').hide();
+         $('#cancel_times').hide();
+         $('#inter_fail_times').hide();
 
-        }else if($('option:selected', this).text() =="Admission"){
+        }else if(jlschool_name =="Interview"){
+         $('#interview_date').show();
+         $('#inter_fail_date').hide();
+         $('#register_date').hide();
+         $('#data_expired_date').hide();
+         $('#admission_date').hide();
+         $('#tracking_code').hide();
+         $('#adm_complete_date').hide();
+         $('#coe_date').hide();
+         $('#coe_fail_date').hide();
+         $('#coe_pass_date').hide();
+         $('#coe_fail_times').hide();
+         $('#cancel_date').hide();
+         $('#cancel_times').hide();
+         $('#inter_fail_times').hide();
+
+        }else if(jlschool_name =="Interview Failed"){
+         $('#interview_date').hide();
+         $('#inter_fail_date').show();
+         $('#register_date').hide();
+         $('#data_expired_date').hide();
+         $('#admission_date').hide();
+         $('#tracking_code').hide();
+         $('#adm_complete_date').hide();
+         $('#coe_date').hide();
+         $('#coe_fail_date').hide();
+         $('#coe_pass_date').hide();
+         $('#coe_fail_times').hide();
+         $('#cancel_date').hide();
+         $('#cancel_times').hide();
+         $('#inter_fail_times').show();
+
+        }else if(jlschool_name =="Admission"){
         $('#data_expired_date').show();
         $('#admission_date').show();
+        $('#inter_fail_date').hide();
         $('#interview_date').hide();
+        $('#register_date').hide();
         $('#tracking_code').hide();
         $('#adm_complete_date').hide();
-      }else if($('option:selected', this).text() =="Admission Complete"){
+        $('#coe_date').hide();
+        $('#coe_fail_date').hide();
+        $('#coe_pass_date').hide();
+        $('#coe_fail_times').hide();
+        $('#cancel_date').hide();
+         $('#cancel_times').hide();
+         $('#inter_fail_times').hide();
+
+      }else if(jlschool_name =="Admission Complete"){
         $('#data_expired_date').hide();
         $('#admission_date').hide();
+        $('#inter_fail_date').hide();
         $('#interview_date').hide();
+        $('#register_date').hide();
         $('#tracking_code').show();
         $('#adm_complete_date').show();
+        $('#coe_date').hide();
+        $('#coe_fail_date').hide();
+        $('#coe_pass_date').hide();
+        $('#coe_fail_times').hide();
+        $('#cancel_date').hide();
+         $('#cancel_times').hide();
+         $('#inter_fail_times').hide();
+
+      }else if(jlschool_name =="COE Waiting"){
+        $('#data_expired_date').hide();
+        $('#admission_date').hide();
+        $('#inter_fail_date').hide();
+        $('#interview_date').hide();
+        $('#register_date').hide();
+        $('#tracking_code').hide();
+        $('#coe_date').show();
+        $('#coe_fail_date').hide();
+        $('#coe_pass_date').hide();
+        $('#adm_complete_date').hide();
+        $('#coe_fail_times').hide();
+        $('#cancel_date').hide();
+         $('#cancel_times').hide();
+         $('#inter_fail_times').hide();
+
+      }else if(jlschool_name =="COE Failed"){
+        $('#data_expired_date').hide();
+        $('#admission_date').hide();
+        $('#inter_fail_date').hide();
+        $('#interview_date').hide();
+        $('#register_date').hide();
+        $('#tracking_code').hide();
+        $('#coe_date').hide();
+        $('#coe_pass_date').hide();
+        $('#coe_fail_date').show();
+        $('#coe_fail_times').show();
+        $('#adm_complete_date').hide();
+        $('#cancel_date').hide();
+         $('#cancel_times').hide();
+         $('#inter_fail_times').hide();
+
+      }else if(jlschool_name =="COE Passed"){
+        $('#data_expired_date').hide();
+        $('#admission_date').hide();
+        $('#inter_fail_date').hide();
+        $('#interview_date').hide();
+        $('#register_date').hide();
+        $('#tracking_code').hide();
+        $('#coe_pass_date').show();
+        $('#coe_date').hide();
+        $('#coe_fail_date').hide();
+        $('#adm_complete_date').hide();
+        $('#coe_fail_times').hide();
+        $('#cancel_date').hide();
+         $('#cancel_times').hide();
+         $('#inter_fail_times').hide();
+
+      }else if(jlschool_name =="COE Failed"){
+        $('#data_expired_date').hide();
+        $('#admission_date').hide();
+        $('#inter_fail_date').hide();
+        $('#interview_date').hide();
+        $('#register_date').hide();
+        $('#tracking_code').hide();
+        $('#coe_pass_date').hide();
+        $('#coe_date').hide();
+        $('#coe_fail_date').show();
+        $('#adm_complete_date').hide();
+        $('#coe_fail_times').show();
+        $('#cancel_date').hide();
+         $('#cancel_times').hide();
+         $('#inter_fail_times').hide();
+
+      }else if(jlschool_name =="Cancel"){
+        $('#data_expired_date').hide();
+        $('#admission_date').hide();
+        $('#inter_fail_date').hide();
+        $('#interview_date').hide();
+        $('#register_date').hide();
+        $('#tracking_code').hide();
+        $('#coe_pass_date').hide();
+        $('#coe_date').hide();
+        $('#coe_fail_date').hide();
+        $('#adm_complete_date').hide();
+        $('#coe_fail_times').hide();
+        $('#cancel_date').show();
+        $('#cancel_times').show();
+        $('#inter_fail_times').hide();
+
       }else{
         $('#data_expired_date').hide();
         $('#admission_date').hide();
+        $('#inter_fail_date').hide();
         $('#interview_date').hide();
+        $('#register_date').hide();
         $('#tracking_code').hide();
         $('#adm_complete_date').hide();
+        $('#coe_date').hide();
+        $('#coe_fail_date').hide();
+        $('#coe_pass_date').hide();
+        $('#coe_fail_times').hide();
+        $('#cancel_date').hide();
+        $('#cancel_times').hide();
+        $('#inter_fail_times').hide();
       }
+    }
+    $("#sele_popup ").change(function() {
+       const JLSchoolName = $('option:selected', this).text();
+       jlsNameSelector(JLSchoolName);
+
     });
-});
+    const selectJLSchoolName = '<?php echo $result->jls_name; ?>';
+     if(selectJLSchoolName){
+      jlsNameSelector(selectJLSchoolName);
+     }else{
+      $('#data_expired_date').hide();
+        $('#admission_date').hide();
+        $('#inter_fail_date').hide();
+        $('#interview_date').hide();
+        $('#register_date').hide();
+        $('#tracking_code').hide();
+        $('#adm_complete_date').hide();
+        $('#coe_date').hide();
+        $('#coe_fail_date').hide();
+        $('#coe_pass_date').hide();
+        $('#coe_fail_times').hide();
+        $('#cancel_date').hide();
+        $('#cancel_times').hide();
+        $('#inter_fail_times').hide();
+     }
+    });
 </script>
 
+
 <style>
+ #register_date,
  #interview_date,
  #data_expired_date,
  #admission_date,
@@ -535,7 +897,21 @@ $(function() {
         <option value="0" <?php if($result->have_you_visited_jp== "0") {echo "selected";} ?>>No</option>
     </select>
   </div>
-
+  
+  <div class="form-group">
+        <?php echo form_label('Visited Status', 'visited_jp_status', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'phone')); ?>
+        <?php
+          echo form_input(array(
+            'name' => 'visited_jp_status',
+            'type' => 'text',
+            'value' => html_escape(set_value('visited_jp_status',isset($result)?$result->visited_jp_status:''), ENT_QUOTES),
+            'placeholder' => 'Please Enter!',
+            'class' => 'form-control',
+            'id' => 'visited_jp_status',
+            'autocomplete' => ''));
+        ?>
+        <span class="text-danger"><?php echo form_error('visited_jp_status'); ?></span>
+  </div>
   <div class="form-group">
         <?php echo form_label('Date of Entry', 'visited_date', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'visited_date')); ?>
         <?php
@@ -551,7 +927,20 @@ $(function() {
         <span class="text-danger"><?php echo form_error('visited_date'); ?></span>
   </div>
  
-
+  <div class="form-group">
+        <?php echo form_label('Times of Entry', 'entry_time', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'phone')); ?>
+        <?php
+          echo form_input(array(
+            'name' => 'entry_time',
+            'type' => 'text',
+            'value' => html_escape(set_value('entry_time',isset($result)?$result->entry_time:''), ENT_QUOTES),
+            'placeholder' => 'Please Enter!',
+            'class' => 'form-control',
+            'id' => 'entry_time',
+            'autocomplete' => ''));
+        ?>
+        <span class="text-danger"><?php echo form_error('entry_time'); ?></span>
+  </div>
   <div class="form-group">
         <?php echo form_label('Date of Departure', 'date_of_departure', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'date_of_departure')); ?>
         <?php
@@ -676,6 +1065,20 @@ $(function() {
         ?>
         <span class="text-danger"><?php echo form_error('current_status_school_grade'); ?></span>
   </div>
+  <div class="form-group" >
+        <?php echo form_label('What do you want to do in Japan?‌', 'what_todo_japan', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'three_month_visa')); ?>
+        <?php
+          echo form_input(array(
+            'name' => 'what_todo_japan',
+            'type' => 'text',
+            'value' => html_escape(set_value('what_todo_japan',isset($result13)?$result13->what_todo_japan:''), ENT_QUOTES),
+            'placeholder' => 'Please Enter!',
+            'class' => 'form-control',
+            'id' => 'what_todo_japan',
+            'autocomplete' => ''));
+        ?>
+        <span class="text-danger"><?php echo form_error('what_todo_japan'); ?></span>
+  </div>
   <div class="form-group" style="margin-bottom: 270px;">
         <?php echo form_label('‌Others (If your are a student of Japanese language course, or neither a student nor a worker, explain your current situation in detail. )', 'student_work_details', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'student_work_details')); ?>
         <?php
@@ -690,22 +1093,9 @@ $(function() {
         ?>
         <span class="text-danger"><?php echo form_error('current_status_school_grade'); ?></span>
   </div>
-  <div class="form-group" style="margin-bottom: 270px;">
-        <?php echo form_label('Have you ever been japan (Including 3 moth short visa) ‌', 'three_month_visa', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'three_month_visa')); ?>
-        <?php
-          echo form_input(array(
-            'name' => 'three_month_visa',
-            'type' => 'text',
-            'value' => html_escape(set_value('three_month_visa',isset($result13)?$result13->three_month_visa:''), ENT_QUOTES),
-            'placeholder' => 'Please Enter!',
-            'class' => 'form-control',
-            'id' => 'three_month_visa',
-            'autocomplete' => ''));
-        ?>
-        <span class="text-danger"><?php echo form_error('current_status_school_grade'); ?></span>
-  </div>
+  
+  <div class="form-group" style="display:none;"  id="specific_plans">
   <h6 class="spec_plan">Specific Plans after Graduating</h6>
-  <div class="form-group">
    <p class="addmission" style="margin-bottom:19px ;">Specific Plans after Graduating</p>
    <select name="specific_plans_after_graduating" class="admission_select" id="specific_plans_after_graduating">
         <option value="Advancing to higher education">Advancing to higher education</option>
@@ -749,21 +1139,21 @@ $(function() {
         <span class="text-danger"><?php echo form_error('specific_plan_school_name'); ?></span>
   </div>
   <div class="form-group">
-        <?php echo form_label('Major', 'specific_plan_major ', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'specific_plan_major')); ?>
+        <?php echo form_label('Major', 'specific_plan_major', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'specific_plan_major')); ?>
         <?php
           echo form_input(array(
-            'name' => 'specific_plan_major ',
+            'name' => 'specific_plan_major',
             'type' => 'text',
-            'value' => html_escape(set_value('specific_plan_major ',isset($result)?$result->specific_plan_major :''), ENT_QUOTES),
+            'value' => html_escape(set_value('specific_plan_major',isset($result)?$result->specific_plan_major:''), ENT_QUOTES),
             'placeholder' => 'Please Enter!',
             'class' => 'form-control',
-            'id' => 'specific_plan_major ',
+            'id' => 'specific_plan_major',
             'autocomplete' => ''));
         ?>
-        <span class="text-danger"><?php echo form_error('specific_plan_major '); ?></span>
+        <span class="text-danger"><?php echo form_error('specific_plan_major'); ?></span>
   </div>
   <div class="form-group">
-        <?php echo form_label('What is your special ability?', 'special_ability ', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'special_ability')); ?>
+        <?php echo form_label('What is your special ability?', 'special_ability', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'phone')); ?>
         <?php
           echo form_input(array(
             'name' => 'special_ability',
@@ -774,10 +1164,10 @@ $(function() {
             'id' => 'special_ability',
             'autocomplete' => ''));
         ?>
-        <span class="text-danger"><?php echo form_error('special_ability '); ?></span>
+        <span class="text-danger"><?php echo form_error('special_ability'); ?></span>
   </div>
   <div class="form-group">
-        <?php echo form_label(' What are your hobbies?', 'hobbies ', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'phone')); ?>
+        <?php echo form_label(' What are your hobbies?', 'hobbies', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'phone')); ?>
         <?php
           echo form_input(array(
             'name' => 'hobbies',
@@ -788,7 +1178,7 @@ $(function() {
             'id' => 'hobbies',
             'autocomplete' => ''));
         ?>
-        <span class="text-danger"><?php echo form_error('hobbies '); ?></span>
+        <span class="text-danger"><?php echo form_error('hobbies'); ?></span>
   </div>
 </div>
 <!-- leftside -->
@@ -1181,6 +1571,20 @@ $(function() {
         <span class="text-danger"><?php echo form_error('will_you_return'); ?></span>
   </div>
   <div class="form-group">
+        <?php echo form_label('Return Other', 'return_other', array( 'class' => '', 'id'=> '', 'style' => '', 'for' => 'phone')); ?>
+        <?php
+          echo form_input(array(
+            'name' => 'return_other',
+            'type' => 'text',
+            'value' => html_escape(set_value('return_other',isset($result)?$result->return_other:''), ENT_QUOTES),
+            'placeholder' => 'Please Enter!',
+            'class' => 'form-control',
+            'id' => 'return_other',
+            'autocomplete' => ''));
+        ?>
+        <span class="text-danger"><?php echo form_error('return_other'); ?></span>
+  </div>
+  <div class="form-group">
   <?php echo form_label('Is it possible to provide in English? ', 'provide_english', array( 'class' => 'form-control-label', 'id'=> '')); ?>
   <span class="badge badge-danger">Required</span>
     <select name="provide_english" id="provide_english" class="admission_select">
@@ -1202,7 +1606,7 @@ $(function() {
           echo form_input(array(
             'name' => 'allergic_medicine_details',
             'type' => 'text',
-            'value' => html_escape(set_value('allergic_medicine_details',isset($result13)?$result13->allergic_medicine_details:''), ENT_QUOTES),
+            'value' => html_escape(set_value('will_you_return',isset($result13)?$result13->allergic_medicine_details:''), ENT_QUOTES),
             'placeholder' => 'Please Enter!',
             'class' => 'form-control',
             'id' => 'allergic_medicine_details',
@@ -1372,6 +1776,20 @@ $(function() {
     </div>  
 </div>
 <div class="form-group">
+  <?php echo form_label('Of these applications, the number of times of non-issuance', 'eligibility_non_issuance', array( 'class' => 'form-control-label', 'id'=> '')); ?>
+  <?php
+          echo form_input(array(
+            'name' => 'eligibility_non_issuance',
+            'type' => 'text',
+           'value' => html_escape(set_value('eligibility_non_issuance',isset($result)?$result->eligibility_non_issuance:''), ENT_QUOTES),
+            'placeholder' => 'Please Enter!',
+            'class' => 'form-control',
+            'id' => 'eligibility_non_issuance',
+            'autocomplete' => ''));
+  ?>
+  <span class="text-danger"><?php echo form_error('eligibility_non_issuance'); ?></span>
+  </div>
+<div class="form-group">
   <?php echo form_label('Issued / Denied Date', 'issued_date', array( 'class' => 'form-control-label', 'id'=> '')); ?>
   <?php
           echo form_input(array(
@@ -1484,7 +1902,7 @@ $(function() {
             'id' => 'type_work_father',
             'autocomplete' => ''));
         ?>
-        <span class="text-danger"><?php echo form_error('type_work_father'); ?></span>
+        <span class="text-danger"><?php echo form_error('address'); ?></span>
        </div>
        <div class="form-group">
         <?php echo form_label('Name of the place where your mother is working ','mother_work_place', array('class' => '')); ?>
@@ -1532,16 +1950,16 @@ $(function() {
             'id' => 'consent_name',
             'autocomplete' => ''));
         ?>
-        <span class="text-danger"><?php echo form_error('consent_name'); ?></span>
+        <span class="text-danger"><?php echo form_error('family_mail'); ?></span>
        </div>
 
        <div class="form-group">
         <?php echo form_label('Relation', 'consent_relation', array( 'class' => '', 'id'=> '')); ?>
           <select name="consent_relation" id="consent_relation" class="admission_select">
-              <option value="father">Father</option>
-              <option value="mother">Mother</option>
-              <option value="brother">Brother/Sister</option>
-              <option value="other">Others</option>
+              <option value="father" <?php if($result13->consent_relation== "father") {echo "selected";} ?>>Father</option>
+              <option value="mother" <?php if($result13->consent_relation== "mother") {echo "selected";} ?>>Mother</option>
+              <option value="brother" <?php if($result13->consent_relation== "brother") {echo "selected";} ?>>Brother/Sister</option>
+              <option value="other" <?php if($result13->consent_relation== "other") {echo "selected";} ?>>Others</option>
           </select>
       </div>
 
@@ -1552,13 +1970,13 @@ $(function() {
           echo form_input(array(
             'name' => 'consent_address',
             'type' => 'text',
-            'value' => html_escape(set_value('consent_address',isset($result13)?$result13->consent_address:''), ENT_QUOTES),
+            'value' => html_escape(set_value('consent_address ',isset($result13)?$result13->consent_address:''), ENT_QUOTES),
             'placeholder' => 'Enter address!',
             'class' => 'form-control',
             'id' => 'consent_address',
             'autocomplete' => ''));
         ?>
-        <span class="text-danger"><?php echo form_error('consent_address'); ?></span>
+        <span class="text-danger"><?php echo form_error('address'); ?></span>
        </div>
        <div class="form-group">
         <?php echo form_label(' Email','consent_email', array('class' => '')); ?>
@@ -1573,7 +1991,7 @@ $(function() {
             'id' => 'consent_email',
             'autocomplete' => ''));
         ?>
-        <span class="text-danger"><?php echo form_error('consent_email'); ?></span>
+        <span class="text-danger"><?php echo form_error('address'); ?></span>
        </div>
        <div class="form-group">
         <?php echo form_label(' Phone','consent_tel', array('class' => '')); ?>
@@ -1609,7 +2027,7 @@ $(function() {
             'id' => 'six_tuition_fee',
             'autocomplete' => ''));
         ?>
-        <span class="text-danger"><?php echo form_error('six_tuition_fee'); ?></span>
+        <span class="text-danger"><?php echo form_error('family_mail'); ?></span>
        </div>
 
        <div class="form-group">
@@ -1635,7 +2053,7 @@ $(function() {
           echo form_input(array(
             'name' => 'second_year_tuitioin_fee',
             'type' => 'text',
-            'value' => html_escape(set_value('phone',isset($result13)?$result13->second_year_tuitioin_fee:''), ENT_QUOTES),
+            'value' => html_escape(set_value('second_year_tuitioin_fee',isset($result13)?$result13->second_year_tuitioin_fee:''), ENT_QUOTES),
             'placeholder' => 'Enter address!',
             'class' => 'form-control',
             'id' => 'second_year_tuitioin_fee',
@@ -1676,9 +2094,9 @@ $(function() {
        <div class="form-group">
         <?php echo form_label('Method of payment', 'payment_method', array( 'class' => '', 'id'=> '')); ?>
           <select name="payment_method" id="payment_method" class="admission_select">
-              <option value="Bank Transfer (Overseas Remittance)">Bank Transfer (Overseas Remittance)</option>
-              <option value="Credit Card">Credit Card</option>
-              <option value="Others">Others</option>
+              <option value="Bank Transfer (Overseas Remittance)" <?php if($result13->payment_method== "Bank Transfer (Overseas Remittance)") {echo "selected";} ?>>Bank Transfer (Overseas Remittance)</option>
+              <option value="Credit Card" <?php if($result13->payment_method== "Credit Card") {echo "selected";} ?>>Credit Card</option>
+              <option value="Others" <?php if($result13->payment_method== "Others") {echo "selected";} ?>>Others</option>
           </select>
       </div>
       <div class="form-group">
@@ -1688,7 +2106,7 @@ applicant and your relationship to the applicant.','defraying_details', array('c
           echo form_input(array(
             'name' => 'defraying_details',
             'type' => 'text',
-            'value' => html_escape(set_value('defraying_details',isset($result13)?$result13->defraying_details:''), ENT_QUOTES),
+            'value' => html_escape(set_value('defraying_details ',isset($result13)?$result13->defraying_details:''), ENT_QUOTES),
             'placeholder' => 'Enter address!',
             'class' => 'form-control',
             'id' => 'defraying_details',
@@ -1718,10 +2136,10 @@ applicant and your relationship to the applicant.','defraying_details', array('c
        <div class="form-group">
         <?php echo form_label('Relation', 'defraying_relation', array( 'class' => '', 'id'=> '')); ?>
           <select name="defraying_relation" id="defraying_relation" class="admission_select">
-              <option value="Father">Father</option>
-              <option value="Mother">Mother</option>
-              <option value="Brother/Sister">Brother/Sister</option>
-              <option value="Others">Others</option>
+              <option value="father" <?php if($result13->defraying_relation== "father") {echo "selected";} ?>>Father</option>
+              <option value="mother" <?php if($result13->defraying_relation== "mother") {echo "selected";} ?>>Mother</option>
+              <option value="brother" <?php if($result13->defraying_relation== "brother") {echo "selected";} ?>>Brother/Sister</option>
+              <option value="other" <?php if($result13->defraying_relation== "other") {echo "selected";} ?>>Others</option>
           </select>
       </div>
 
@@ -1739,6 +2157,21 @@ applicant and your relationship to the applicant.','defraying_details', array('c
             'autocomplete' => ''));
         ?>
         <span class="text-danger"><?php echo form_error('defraying_tel'); ?></span>
+       </div>
+       <div class="form-group">
+        <?php echo form_label('Address','defraying_address', array('class' => '')); ?>
+        <span class="badge badge-danger">Required</span>
+        <?php
+          echo form_input(array(
+            'name' => 'defraying_address',
+            'type' => 'text',
+            'value' => html_escape(set_value('defraying_address',isset($result13)?$result13->defraying_address:''), ENT_QUOTES),
+            'placeholder' => 'Please Enter!',
+            'class' => 'form-control',
+            'id' => 'defraying_address',
+            'autocomplete' => ''));
+        ?>
+        <span class="text-danger"><?php echo form_error('defraying_address'); ?></span>
        </div>
        <div class="form-group">
         <?php echo form_label('Company Name','defraying_company', array('class' => '')); ?>
@@ -1770,7 +2203,7 @@ applicant and your relationship to the applicant.','defraying_details', array('c
         ?>
         <span class="text-danger"><?php echo form_error('defraying_work_tel'); ?></span>
        </div>
-       <div class="form-group">
+       <!-- <div class="form-group">
         <?php echo form_label('Signature','defraying_sign', array('class' => '')); ?>
         <span class="badge badge-danger">Required</span>
         <?php
@@ -1784,7 +2217,7 @@ applicant and your relationship to the applicant.','defraying_details', array('c
             'autocomplete' => ''));
         ?>
         <span class="text-danger"><?php echo form_error('defraying_sign'); ?></span>
-       </div>
+       </div> -->
        <div class="form-group">
         <?php echo form_label('Date','defraying_date', array('class' => '')); ?>
         <span class="badge badge-danger">Required</span>
@@ -2312,8 +2745,43 @@ $(function() {
       $('.specify').hide();
      }
 });
+$(function() {  
+     const afterGraduating = (graduate_plan) =>{
+       if(graduate_plan =="shizuoka"){
+         $('#specific_plans').hide();
+         $('#future_plan').show();
+        }else if(graduate_plan =="ECC"){
+          $('#specific_plans').show();
+          $('#future_plan').hide();
+      }else if(graduate_plan =="JCLI"){
+          $('#specific_plans').show();
+          $('#future_plan').hide();
+      }else if(graduate_plan =="OJLS"){
+          $('#specific_plans').show();
+          $('#future_plan').hide();
+      }else if(graduate_plan =="fukuoka"){
+          $('#specific_plans').show();
+          $('#future_plan').hide();
+      }else{
+         $('#specific_plans').hide();
+         $('#future_plan').hide();
+      }
+    }
+    $("#jls_name").change(function() {
+       const specificPlanName = $('option:selected', this).text();
+       afterGraduating(specificPlanName);
+
+    });
+    const selectspecificPlan = '<?php echo $result->jls_name; ?>';
+     if(selectspecificPlan){
+      afterGraduating(selectspecificPlan);
+     }else{
+      $('#specific_plans').hide();
+      $('#future_plan').hide();
+     }
+});
 </script>
-<div class="col-md-12 float-left" style="padding-bottom: 15px;">
+<div class="col-md-12 float-left" style="padding-bottom: 15px;display:none;" id="future_plan">
 <h6 class="" style="padding: 33px 0px 12px;"> この学校を卒業した後の予定 < Future plan after graduating from this school.></h6>
 <div class="form-group">
   <select name="future_plan_after_graduating" id="future_plan_after_graduating" class="course_select">
@@ -3123,6 +3591,74 @@ $(function() {
 </tr>
 </table>
 </div>
+<div class="form-group">
+  <?php echo form_label('Are you planning to stay with them in Japan? : ', 'plan_to_stay_with_them', array( 'class' => 'form-control-label', 'id'=> '')); ?><br/>
+    <select name="ja_plan_to_stay_with_them" id="ja_plan_to_stay_with_them" class="admission_select">
+        <option value="1" <?php if($result->ja_plan_to_stay_with_them== "1") {echo "selected";} ?>>Yes</option>
+        <option value="0" <?php if($result->ja_plan_to_stay_with_them== "0") {echo "selected";} ?>>No</option>
+    </select>
+  </div>
+  <div class="form-group">
+        <?php
+          echo form_label('you/your family have Japanese friends or acquaintances, please write his/her name, address,phone number, relationship, etc.','family_inJpfri', array('class' => ''));
+        ?>
+
+
+
+        <div class="col-md-12 col-sm-12 p-0">
+          <?php 
+            $data = array(
+            'name' => 'family_inJpfri',
+            'value' => '',
+            'rows' => '3',
+            'cols' => '',
+            'placeholder' => 'Please Enter!',
+            'class' => "form-control",
+            'value' => set_value('family_inJpfri',isset($result13)?$result13->family_inJpfri:'',ENT_QUOTES),
+          );
+          echo form_textarea($data); ?>
+          <span class="text-danger"><?php echo form_error('family_inJpfri'); ?></span>
+  </div>
+  </div>
+  <!-- <div class="col-md-6">
+  <label>Please attach the picture of you and your family below this</label>
+    <div class="col-md-6" style="width: 100%;padding-left:0px;padding-right: 0px;">
+      <?php
+        echo form_input(array(
+        'name' => 'familyfile',
+        'type' => 'file',
+        'class' => 'form-control stu_label',
+        'id' => 'clickImage',
+        'accept' => 'image/*'
+        ));
+      ?>
+      <div class="form-group col-md-12 col-sm-12 p-0" id="showImg3"> </div>   
+    </div>
+  <span class="text-danger"><?php echo form_error('familyfile'); ?></span>
+  </div> -->
+  <div class="col-md-6 float-left" style="display: flex;padding-top: 12px;">
+  <!-- Student Photo -->
+  <?php
+      echo form_label('Please attach the picture of you and your family below this','familyfile', array('class' => 'col-form-label')) ;    
+  ?>
+   <div class="col-md-6" style="width: 100%;padding-left:0px;padding-right: 0px;">
+        <?php
+              echo form_input(array(
+              'name' => 'familyfile',
+              'type' => 'file',
+              'class' => 'form-control',
+              'id' => 'clickImg',
+              'accept' => 'images/*'
+              ));
+            ?>            
+            <span class="text-danger"><?php echo form_error('familyfile'); ?></span>
+            <?php if(!empty($result->image_file)) { ?>
+              <img src="<?php echo base_url('upload/assets/adm/usr/'.$result->family_file); ?>" width="100px;" class="pb-1">
+            <?php } ?>
+            <div class="form-group" id="showImg3"></div>               
+    </div>
+  <span class="text-danger"><?php echo form_error('family_file'); ?></span>
+  </div>
 </div>
 <!-- Table -->
 <!-- Table -->
@@ -3133,13 +3669,7 @@ $(function() {
         <option value="0" <?php if($result->family_in_japan== "0") {echo "selected";} ?>>No</option>
     </select>
 <p>If yes, fill in all the family members in Japan.</p>
-<div class="form-group">
-  <?php echo form_label('Are you planning to stay with them in Japan? : ', 'plan_to_stay_with_them', array( 'class' => 'form-control-label', 'id'=> '')); ?><br/>
-    <select name="ja_plan_to_stay_with_them" id="ja_plan_to_stay_with_them" class="admission_select">
-        <option value="1" <?php if($result->ja_plan_to_stay_with_them== "1") {echo "selected";} ?>>Yes</option>
-        <option value="0" <?php if($result->ja_plan_to_stay_with_them== "0") {echo "selected";} ?>>No</option>
-    </select>
-  </div>
+
 <div class="tbl">
 <table class="table-bordered" name="applicant_id" id="familyInJp">
   <thead class="tbl_head">
@@ -3415,6 +3945,114 @@ $(function() {
 </tr>
 </table>
 </div>
+<br>
+<div class="form-group">
+        <?php echo form_label('If you have stayed in Japan more than four times, please use the blank below.','japan_four_times', array('class' => '')); ?>
+        <span class="badge badge-danger">Required</span>
+        <?php
+          echo form_input(array(
+            'name' => 'japan_four_times',
+            'type' => 'text',
+            'value' => html_escape(set_value('japan_four_times',isset($result13)?$result13->japan_four_times:''), ENT_QUOTES),
+            'placeholder' => 'Please Enter!',
+            'class' => 'form-control',
+            'id' => 'japan_four_times',
+            'autocomplete' => ''));
+        ?>
+        <span class="text-danger"><?php echo form_error('japan_four_times'); ?></span>
+       </div>
+</div>
+<!-- Table -->
+
+
+
+<!-- Table -->
+<div class="col-md-12 float-left" style="padding-bottom: 15px;">
+<h6 class="" style="padding: 20px 0px 12px;">Have you ever been japan (Including 3 moth short visa)</h6>
+<div class="tbl">
+<table class="table-bordered" name="applicant_id">
+  <thead class="tbl_head">
+    <tr>
+      <th></th>
+      <th>Purpose	</th>
+      <th>Status	</th>
+      <th>Period of Stay </th>
+      <th >Preparation	 </th>
+    </tr>
+  </thead>
+  <tbody>
+  <?php
+        $x=1;
+        $y=0;
+        // var_dump($result14);
+          foreach($result14 as $result){
+  ?> 
+    <tr>
+    <td class="text-center">
+       <input type="checkbox" name="productCheck[]" class="productCheck" data-item="1">
+  </td>
+      <td class="text-center" class="rowID">
+      <?php
+          echo form_input(array(
+            'name' => 'shortVisa_purpose[]',
+            'type' => 'text',
+            'value' => html_escape(set_value('shortVisa_purpose',isset($result)?$result->shortVisa_purpose:''), ENT_QUOTES),
+            'class' => 'table-control productItem',
+            'id' => 'shortVisa_purpose',
+            'autocomplete' => ''));
+      ?>
+      </td>
+      
+      <td class="rowID">
+      <?php
+          echo form_input(array(
+            'name' => 'shortVisa_status[]',
+            'type' => 'text',
+            'value' => html_escape(set_value('shortVisa_status',isset($result)?$result->shortVisa_status:''), ENT_QUOTES),
+            'class' => 'table-control productItem',
+            'id' => 'shortVisa_status',
+            'autocomplete' => ''));
+      ?>
+      </td>
+      <td class="rowID">
+      <?php
+          echo form_input(array(
+            'name' => 'shortVisa_period[]',
+            'type' => 'date',
+            'value' => html_escape(set_value('shortVisa_period',isset($result)?$result->shortVisa_period:''), ENT_QUOTES),
+            'class' => 'table-control productItem',
+            'id' => 'shortVisa_period',
+            'autocomplete' => ''));
+      ?>
+      </td>
+      <td class="rowID">
+      <?php
+          echo form_input(array(
+            'name' => 'shortVisa_prepare[]',
+            'type' => 'text',
+            'value' => html_escape(set_value('shortVisa_prepare',isset($result)?$result->shortVisa_prepare:''), ENT_QUOTES),
+            'class' => 'table-control productItem',
+            'id' => 'shortVisa_prepare',
+            'autocomplete' => ''));
+      ?>
+      </td>
+    </tr>
+    <?php }
+    ?>
+  </tbody>
+</table>
+<table class="table-bordered" name="applicant_id">
+<tr>
+<th scope="row" colspan="9" class="align-middle" style="padding: 3px;">
+      <span class="float-left">
+        <a class="btn btn-sm btn-outline-secondary px-2 rounded-1 overlay" id="addNewRow08" style="font-size: 0.8rem;"><strong><i class="fas fa-plus-circle"></i></strong><span class="material-icons align-top md-20 mr-1">add_circle</span>Add row</a>
+        <a class="btn btn-sm btn-outline-danger px-2 rounded-1 overlay" id="removeRow08" style="font-size: 0.8rem;"><strong><i class="fas fa-minus-circle"></i></strong><span class="material-icons align-top md-20 mr-1">delete</span>Remove</a>
+      </span>
+</th>
+</tr>
+</table>
+</div>
+<!-- Table -->
 </div>
 <!-- Table -->
 </div>

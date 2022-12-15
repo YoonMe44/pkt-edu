@@ -80,7 +80,7 @@ img{
   <table style="width: 100%;">
         <tr style="border-top: none !important;">
             <th style="width:18%;background-color: #e6e4e3;text-align:center;font-weight:normal;">記入日<br/>date Y/M/D</th>
-            <td style="border-left: none !important;font-weight:normal;"><?php echo $splitted = date('Y', strtotime($result->created_at));?>年Y<?php echo $splitted = date('m', strtotime($result->created_at));?>月M<?php echo $splitted = date('d', strtotime($result->created_at));?>日D</td>
+            <td style="border-left: none !important;font-weight:normal;"><?php echo $splitted = date('Y', strtotime($result->register_date));?>年Y<?php echo $splitted = date('m', strtotime($result->register_date));?>月M<?php echo $splitted = date('d', strtotime($result->register_date));?>日D</td>
         </tr>
   </table>
   <table style="width: 100%;">

@@ -15,6 +15,7 @@ class Langschoolapplicant_Model extends CI_Model
   private $db9 = "JLS_family_member";
   private $db10 = "JLS_family_in_japan";
   private $db11 = "JLS_previous_stay_in_japan";
+  private $db12 = "JLS_ever_been_japan";
 
   public function JLSapplicantinfo($userData)
   {
@@ -117,7 +118,14 @@ class Langschoolapplicant_Model extends CI_Model
     $query = $this->db->get($this->db1);
     return $query->result();
   }
-  
+  public function getJLSDetail9($id)
+  {
+    $this->db->select('*,JLS_applicant_info.id');
+		$this->db->where($this->db1.'.id', $id);
+    $this->db->join($this->db12, $this->db1.'.id = '.$this->db12.'.applicant_id', 'left' );
+    $query = $this->db->get($this->db1);
+    return $query->result();
+  }
   public function studentDetail($id)
 	{
     $this->db->select('student.id,user_id,name,email,info_phone as info_phone,address,birthday,nrc,education,social,std_profile.request_date,image_file,std_profile.status,std_profile.permission');
