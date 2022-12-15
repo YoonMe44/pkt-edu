@@ -425,7 +425,7 @@
 <script>
 $(function() { 
   const jlsNameSelector = (jlschool_name) =>{
-       if(jlschool_name =="Register"){
+       if(jlschool_name == "Register"){
          $('#register_date').show();
          $('#inter_fail_date').hide();
          $('#interview_date').hide();
@@ -441,7 +441,7 @@ $(function() {
          $('#cancel_times').hide();
          $('#inter_fail_times').hide();
 
-        }else if(jlschool_name =="Interview"){
+        }else if(jlschool_name == "Interview"){
          $('#interview_date').show();
          $('#inter_fail_date').hide();
          $('#register_date').hide();
@@ -457,7 +457,7 @@ $(function() {
          $('#cancel_times').hide();
          $('#inter_fail_times').hide();
 
-        }else if(jlschool_name =="Interview Failed"){
+        }else if(jlschool_name == "Interview Failed"){
          $('#interview_date').hide();
          $('#inter_fail_date').show();
          $('#register_date').hide();
@@ -473,7 +473,7 @@ $(function() {
          $('#cancel_times').hide();
          $('#inter_fail_times').show();
 
-        }else if(jlschool_name =="Admission"){
+        }else if(jlschool_name == "Admission"){
         $('#data_expired_date').show();
         $('#admission_date').show();
         $('#inter_fail_date').hide();
@@ -489,7 +489,7 @@ $(function() {
          $('#cancel_times').hide();
          $('#inter_fail_times').hide();
 
-      }else if(jlschool_name =="Admission Complete"){
+      }else if(jlschool_name == "Admission Complete"){
         $('#data_expired_date').hide();
         $('#admission_date').hide();
         $('#inter_fail_date').hide();
@@ -505,7 +505,7 @@ $(function() {
          $('#cancel_times').hide();
          $('#inter_fail_times').hide();
 
-      }else if(jlschool_name =="COE Waiting"){
+      }else if(jlschool_name == "COE Waiting"){
         $('#data_expired_date').hide();
         $('#admission_date').hide();
         $('#inter_fail_date').hide();
@@ -521,7 +521,7 @@ $(function() {
          $('#cancel_times').hide();
          $('#inter_fail_times').hide();
 
-      }else if(jlschool_name =="COE Failed"){
+      }else if(jlschool_name == "COE Failed"){
         $('#data_expired_date').hide();
         $('#admission_date').hide();
         $('#inter_fail_date').hide();
@@ -537,7 +537,7 @@ $(function() {
          $('#cancel_times').hide();
          $('#inter_fail_times').hide();
 
-      }else if(jlschool_name =="COE Passed"){
+      }else if(jlschool_name == "COE Passed"){
         $('#data_expired_date').hide();
         $('#admission_date').hide();
         $('#inter_fail_date').hide();
@@ -602,15 +602,16 @@ $(function() {
         $('#inter_fail_times').hide();
       }
     }
-    $("#sele_popup ").change(function() {
-       const JLSchoolName = $('option:selected', this).text();
-       jlsNameSelector(JLSchoolName);
+    $(".school_select").change(function() {
+       const jlschoolame = $('option:selected', this).text();
+       jlsNameSelector(jlschoolame);
 
     });
-    const selectJLSchoolName = '<?php echo $result->jls_name; ?>';
+    const selectJLSchoolName = '<?php echo $result->appli_status; ?>';
      if(selectJLSchoolName){
       jlsNameSelector(selectJLSchoolName);
      }else{
+      console.log(123);
       $('#data_expired_date').hide();
         $('#admission_date').hide();
         $('#inter_fail_date').hide();
