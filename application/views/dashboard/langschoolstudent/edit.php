@@ -127,7 +127,7 @@
   <!-- Register date -->
   <div class="col-md-10" id="register_date"  style="display: none;">
     <div class="form-group school_list"  style="width:60% ;padding: 0px;">
-    <p class="list_label" >
+    <p class="list_label" style="width: 48.5%;">
        <label style="margin-bottom: 0px;margin-top: 12px;">Register Date</label>
        <span class="badge badge-danger" >Required</span>
 
@@ -147,8 +147,8 @@
 <!-- Register date -->
 <!-- interview date -->
 <div class="col-md-10" id="interview_date"  style="display: none;">
-    <div class="form-group school_list"  style="width:60% ;padding: 0px;">
-    <p class="list_label" >
+    <div class="form-group school_list"  style="width:60% ;padding-left: 0px;">
+    <p class="list_label" style="width: 48.5%;">
        <label style="margin-bottom: 0px;margin-top: 12px;">Interview Date</label>
        <span class="badge badge-danger" >Required</span>
 
@@ -168,8 +168,8 @@
 <!-- interview date -->
 <!-- interview failed date -->
 <div class="col-md-10" id="inter_fail_date"  style="display: none;">
-    <div class="form-group school_list"  style="width:60% ;padding: 0px;">
-    <p class="list_label" >
+    <div class="form-group school_list"  style="width:60% ;padding-left: 0px;">
+    <p class="list_label" style="width: 48.5%;">
        <label style="margin-bottom: 0px;margin-top: 12px;">Interview Failed Date</label>
        <span class="badge badge-danger" >Required</span>
 
@@ -189,8 +189,8 @@
 <!-- interview failed date -->
 <!-- admission date -->
 <div class="col-md-10" id="admission_date" style="display: none;">
-    <div class="form-group school_list"  style="width:60% ;padding: 0px;">
-    <p class="list_label" >
+    <div class="form-group school_list"  style="width:60% ;padding-left: 0px;">
+    <p class="list_label" style="width: 48.5%;">
        <label  style="margin-bottom: 0px;margin-top: 12px;">Admission Date</label>
        <span class="badge badge-danger">Required</span>
     </p>
@@ -210,8 +210,8 @@
 
 <!-- collect data expired date -->
 <div class="col-md-10" id="data_expired_date" style="display: none;">
-    <div class="form-group school_list"  style="width:60% ;padding: 0px;">
-    <p class="list_label">
+    <div class="form-group school_list"  style="width:60% ;padding-left: 0px;">
+    <p class="list_label" style="width: 48.5%;">
        <label  style="margin-bottom: 0px;margin-top: 12px;">Collect Data EXP Date</label>
        <span class="badge badge-danger" >Required</span>
     </p>
@@ -231,8 +231,8 @@
 
 <!-- admission date -->
 <div class="col-md-10" id="adm_complete_date" style="display: none;">
-    <div class="form-group school_list" style="width:60% ;padding: 0px;">
-    <p class="list_label">
+    <div class="form-group school_list" style="width:60% ;padding-left: 0px;">
+    <p class="list_label" style="width: 48.5%;">
        <label  style="margin-bottom: 0px;margin-top: 12px;">Complete Date</label>
        <span class="badge badge-danger">Required</span>
     </p>
@@ -252,8 +252,8 @@
 
 <!-- tracking code -->
 <div class="col-md-10" id="tracking_code" style="display: none;">
-    <div class="form-group school_list"  style="width:60% ;padding: 0px;margin-top: 8px;">
-    <p class="list_label">
+    <div class="form-group school_list"  style="width:60% ;padding-left: 0px;">
+    <p class="list_label" style="width: 48.5%;">
        <label  style="margin-bottom: 0px;margin-top: 12px;">Tracking Code</label>
        <!-- <span class="badge badge-danger">Required</span> -->
     </p>
@@ -272,8 +272,8 @@
 <!-- tracking code -->
 <!-- interview date -->
 <div class="col-md-10" id="coe_date"  style="display: none;">
-    <div class="form-group school_list"  style="width:60% ;padding: 0px;">
-    <p class="list_label" >
+    <div class="form-group school_list"  style="width:60% ;padding-left: 0px;">
+    <p class="list_label" style="width: 48.5%;">
        <label style="margin-bottom: 0px;margin-top: 12px;">COE Date</label>
        <span class="badge badge-danger" >Required</span>
 
@@ -293,8 +293,8 @@
 <!-- interview date -->
 <!-- interview date -->
 <div class="col-md-10" id="coe_pass_date"  style="display: none;">
-    <div class="form-group school_list"  style="width:60% ;padding: 0px;">
-    <p class="list_label" >
+    <div class="form-group school_list"  style="width:60% ;padding-left: 0px;">
+    <p class="list_label" style="width: 48.5%;">
        <label style="margin-bottom: 0px;margin-top: 12px;">COE Passed</label>
        <span class="badge badge-danger" >Required</span>
 
@@ -314,8 +314,8 @@
 <!-- interview date -->
 <!-- interview date -->
 <div class="col-md-10" id="coe_fail_date"  style="display: none;">
-    <div class="form-group school_list"  style="width:60% ;padding: 0px;">
-    <p class="list_label" >
+    <div class="form-group school_list"  style="width:60% ;padding-left: 0px;">
+    <p class="list_label" style="width: 48.5%;">
        <label style="margin-bottom: 0px;margin-top: 12px;">COE Failed</label>
        <span class="badge badge-danger" >Required</span>
 
@@ -335,8 +335,8 @@
 <!-- interview date -->
 <!-- coe failed times -->
 <div class="col-md-10" id="coe_fail_times"  style="display: none;">
-    <div class="form-group school_list"  style="width:60% ;padding: 0px;">
-    <p class="list_label" >
+    <div class="form-group school_list"  style="width:60% ;padding-left: 0px;">
+    <p class="list_label" style="width: 48.5%;">
        <label style="margin-bottom: 0px;margin-top: 12px;">COE Failed Times</label>
        <span class="badge badge-danger" >Required</span>
 
@@ -356,8 +356,8 @@
 <!-- coe failed times -->
 <!-- cancel dates -->
 <div class="col-md-10" id="cancel_date"  style="display: none;">
-    <div class="form-group school_list"  style="width:60% ;padding: 0px;">
-    <p class="list_label" >
+    <div class="form-group school_list"  style="width:60% ;padding-left: 0px;">
+    <p class="list_label" style="width: 48.5%;">
        <label style="margin-bottom: 0px;margin-top: 12px;">Cancel Date</label>
        <span class="badge badge-danger" >Required</span>
 
@@ -377,8 +377,8 @@
 <!-- cancel date -->
 <!-- cancel times -->
 <div class="col-md-10" id="cancel_times"  style="display: none;">
-    <div class="form-group school_list"  style="width:60% ;padding: 0px;">
-    <p class="list_label" >
+    <div class="form-group school_list"  style="width:60% ;padding-left: 0px;">
+    <p class="list_label" style="width: 48.5%;">
        <label style="margin-bottom: 0px;margin-top: 12px;">Cancel Times</label>
        <span class="badge badge-danger" >Required</span>
 
@@ -398,8 +398,8 @@
 <!-- cancel times -->
 <!-- interview failed times -->
 <div class="col-md-10" id="inter_fail_times"  style="display: none;">
-    <div class="form-group school_list"  style="width:60% ;padding: 0px;">
-    <p class="list_label" >
+    <div class="form-group school_list"  style="width:60% ;padding-left: 0px;">
+    <p class="list_label" style="width: 48.5%;">
        <label style="margin-bottom: 0px;margin-top: 12px;">Inter Fail Times</label>
        <span class="badge badge-danger" >Required</span>
 
@@ -651,6 +651,23 @@ select.form-group.col-md-9.school_select{
     margin: 7px 7px 7px 35px;
     border: 1px solid #ced4db;
     border-radius: 3px;
+}
+input#register_date,
+input#interview_date,
+input#inter_fail_date,
+input#inter_fail_times,
+input#admission_date,
+input#data_expired_date,
+input#adm_complete_date,
+input#tracking_code,
+input#coe_date,
+input#cancel_date,
+input#cancel_times,
+input#coe_pass_date,
+input#coe_fail_date,
+input#coe_fail_times
+ {
+    width: 49%;
 }
 </style>
 <!-- Start dropdown APPLICANT INFORMATION -->
@@ -4388,7 +4405,7 @@ color:#48a1af;
 }
 .school_list{
   width: 55%;
-  padding: 5px 12px;
+  padding: 17px 12px;
   align-items: center;
   display: flex;
 }
